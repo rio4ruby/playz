@@ -20,3 +20,22 @@ demo_user = create_user('demo@kitatdot.net','demodemo')
 puts 'Demo user created: ' << demo_user.email
 
 
+def pg_args(db_config)
+  "-U #{db_config['username']} -h #{db_config['host']} #{db_config['database']}"
+end
+def load_table_cmd(table)
+  db_config = Rails.application.config.database_configuration[Rails.env]
+  "psql #{pg_args(db_config)} < data/#{table}.sql >/dev/null"
+end
+
+puts 'POPULATING DATABASE'
+
+tables = %w{artists file_dirs image_files albums songs genres tags audio_files audio_files_tags lyrics}
+tables.each do |table|
+  puts "Populate #{table}"
+  #system("psql -h db.kitatdot.net -U play playit_development < data/#{table}.sql")
+  system(load_table_cmd(table))
+end
+
+
+

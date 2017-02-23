@@ -1,0 +1,2 @@
+class FileDir < ApplicationRecord
+end
