@@ -42,6 +42,14 @@ gem 'haml-rails'
 # Use sunspot/solr
 gem 'sunspot_rails'
 gem 'sunspot_solr'
+gem 'progress_bar'
+
+# Use twitter bootstrap
+gem 'bootstrap', '~> 4.0.0.alpha6'
+
+gem 'rio'
+gem 'ancestry'
+gem 'acts_as_list'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
