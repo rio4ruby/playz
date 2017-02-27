@@ -1,0 +1,30 @@
+.Album {
+    background-color: #f8fff8;
+    border: 1px solid #338833;
+    .elem-body {
+        color: #888;
+        font-size: smaller;
+    }
+    .elem-head {
+        padding: 0.5em;
+        .desc {
+            height: 64px;
+            .row {
+                height: 50%;
+            }
+            /* .row.name { */
+            /*     font-weight: bolder; */
+            /*     /\* font-size: 16px; *\/ */
+                
+            /* } */
+            /* .row.artist { */
+            /*     font-style: oblique; */
+            /* } */
+            .name {
+                /* height: 32px; */
+                /* font-style: oblique; */
+                /* font-weight: bold; */
+            }
+        }
+    }
+}

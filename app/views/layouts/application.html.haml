@@ -2,11 +2,14 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{ name: "viewport", content: "width=device-width, initial-scale=1, shrink-to-fit=no" }
     %title Playz
     = csrf_meta_tags
+    %link(href="favicon.ico" rel="shortcut icon")
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    %p.notice= notice
-    %p.alert= alert
-    = yield
+    = render partial: 'layouts/navbar'
+    = render partial: 'layouts/messages'
+    #main-body
+      = yield

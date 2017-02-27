@@ -1,0 +1,16 @@
+.container
+  .row#search-results
+    .col-sm-12
+      - search.hits.each do |hit|
+        .row.hit-row{ class: "#{hit.class_name}" }
+          .col-sm-12
+            - elem = hit.instance
+            .elem{ 'data-elem_id' => "#{elem.class.to_s.tableize}-#{elem.id}" }
+              .elem-head
+                .row
+                  .col-sm-12
+                    = render partial: "#{hit.class_name.tableize}/elem_head", locals: { elem: elem }
+              .elem-body  
+                = render partial: "#{hit.class_name.tableize}/elem_body", locals: { elem: elem }
+            -# = render :partial => "#{hit.class_name.tableize}/elem", :object => hit.instance, :as => 'elem', :layout => 'home/hit_layout', :locals => { :hit => hit, :tracks => false, :imgsz => 'large' }
+            

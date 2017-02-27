@@ -1,0 +1,33 @@
+.AudioFile {
+    background-color: #f8f8ff;
+    border: 1px solid #8888aa;
+    .elem-head {
+        .detail-button {
+            height: 30px;
+            line-height: 30px;
+            width: 0.5em;
+        }
+        .image {
+            margin-right: 1em;
+            img {
+                height: 24px;
+            }
+        }
+        .data {
+            color: #888;
+            .song {
+                font-weight: bold;
+            }
+            .artist {
+                font-style: italic;
+            }
+            .tracknum {
+                display: none;
+            }
+            .url {
+                display: none;
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,7 @@
+.hit-row{ :class => "playable #{hit.class_name}", :id => "sr-#{hit.class_name.underscore}-#{hit.primary_key}" }
+  .hit-cont{ :class => "#{hit.class_name}"}
+    .hit-score
+      = hit.score ? ("%.3f" % hit.score) : '--'
+    -# .detail-button
+    -#   &raquo;
+    = yield

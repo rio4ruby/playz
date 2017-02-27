@@ -1,0 +1,20 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.level1 {
+    background-color: #777;
+    .colm {
+        border: 1px solid red;
+    }
+}
+.level2 {
+     background-color: #aaa;
+    .colm {
+        border: 1px solid blue;
+    }
+}
+.hit-row {
+    margin-bottom: 3px;
+}
+   
+                          

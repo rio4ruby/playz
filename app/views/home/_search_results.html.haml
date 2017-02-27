@@ -1,0 +1,5 @@
+-# = paginate search.hits, theme: 'twitter-bootstrap', pagination_class: 'pagination-small pagination-centered'
+.hits-list
+  = render(:partial => 'home/hit_elem', :collection => search.hits, :as => :hit, :locals => { :search => search } )
+-# %footer{ :class => 'sr-pagination' }
+-#   = paginate search.hits, theme: 'twitter-bootstrap', pagination_class: 'pagination-small pagination-centered'

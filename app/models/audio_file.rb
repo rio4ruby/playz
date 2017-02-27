@@ -60,7 +60,7 @@ class AudioFile < ApplicationRecord
   end
 
   def self.limit_to(*els)
-    els.flatten.inject(scoped) do |combined_scope,el|
+    els.flatten.inject(all) do |combined_scope,el|
       combined_scope.where( el.class.to_s.foreign_key.to_sym => el.id )
     end
   end

@@ -1,0 +1,13 @@
+.image.float-left
+  = link_to %{<img src="#{albumart_url(elem,'medium')}" border="0" />}.html_safe, add_album_path(elem.id), :remote => true
+.desc
+  .row.name
+    .col-sm-12
+      %strong= elem.name
+  .row.artist
+    .col-sm-12
+      %em
+        - artists = elem.artists.uniq
+        = artists.first(3).map(&:name).join(" &#x25c6; ").html_safe
+        = (artists.size > 3 ? " &hellip;".html_safe : "")
+  

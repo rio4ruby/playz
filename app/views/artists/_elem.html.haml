@@ -1,0 +1,17 @@
+- all_albums = elem.albums.uniq
+- all_tracks = all_albums.map{|alb| alb.audio_files.limit_to(elem) }.flatten
+.elem.Artist{ 'data-elem_id' => "#{elem.class.to_s.tableize}-#{elem.id}" } 
+  .elem-data
+    .name
+      = link_to elem.name, artist_path(elem.id), :class => 'link-name'
+      %span{ :class => 'artist-subname' }
+        = '(' + pluralize(all_albums.size,'album') + ')'
+      %span{ :class => 'artist-subname' }
+        = '(' + pluralize(all_tracks.size,'track') + ')'
+  .elem-content
+    - albs = (elem.solo_albums + elem.albums).uniq
+    
+    - albs.each do |alb|
+      .row
+        .col-sm-12.col-md-6.col-lg-4
+          = render :partial => 'artists/album', :object => alb, :locals => { :artist => elem }

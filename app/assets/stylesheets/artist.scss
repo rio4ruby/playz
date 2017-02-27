@@ -1,0 +1,39 @@
+.Artist {
+    background-color: #fffff8;
+    border: 1px solid #aaaa88;
+    .alb-col {
+        margin-bottom: 6px;
+    }
+    .elem-body {
+        .name {
+            height: 40px;
+            font-size: 14px;
+            line-height: 1;
+            font-style: oblique;
+            padding-left: 1em;
+            display: flex;
+            align-items: center;
+        }
+        .image {
+            img {
+                height: 40px;
+            }
+        }
+    }
+    .elem-head {
+        .name {
+            height: 36px;
+            font-style: oblique;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            a {
+                padding-right: 1em;
+            }
+            .subname {
+                color: #999;
+                font-size: 60%;
+            }
+        }
+    }
+}
