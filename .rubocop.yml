@@ -1,0 +1,41 @@
+# This is the configuration used to check the rubocop source code.
+
+# inherit_from: .rubocop_todo.yml
+
+AllCops:
+  Exclude:
+    - 'vendor/**/*'
+    - 'spec/fixtures/**/*'
+    - 'tmp/**/*'
+    - 'db/schema.rb'
+    - 'test/test_helper.rb'
+  TargetRubyVersion: 2.1
+
+Style/Encoding:
+  EnforcedStyle: when_needed
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
+
+Style/IndentHeredoc:
+  EnforcedStyle: powerpack
+
+Style/Documentation:
+  Enabled: false
+  
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
+
+Metrics/LineLength:
+  Max: 160
+
+Metrics/AbcSize:
+  Max: 50
+
+Metrics/MethodLength:
+  Max: 30
+  
