@@ -1,6 +1,10 @@
 .AudioFile {
     background-color: #f8f8ff;
-    border: 1px solid #8888aa;
+    border: 2px solid rgba(100,100,160,0.3);
+    &:hover {
+        border: 2px solid rgba(100,100,160,1.0);
+        border-radius: 10px;
+    }
     .elem-head {
         .detail-button {
             height: 30px;
