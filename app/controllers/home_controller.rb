@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 class HomeController < ApplicationController
   layout proc { |controller| controller.request.xhr? ? false : 'application' }
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
 
   def index
-    Rails.logger.info("Index Search: #{params}")
-    @q = params[:q]
-    @q ||= ''
+    Rails.logger.info("Index Search: #{params.inspect}")
+    @q = params[:q] || ''
 
     if @q
       srch = [Artist, Album, AudioFile].select { |c| params[c.to_s.to_sym] }
@@ -29,7 +28,39 @@ class HomeController < ApplicationController
     end
   end
 
+  def home
+
+  end
+
+  def search_results
+    @search = SearchService.search(params, Album, Artist, AudioFile)
+
+  end
+
+  
   def search
+    Rails.logger.info("Search: #{params}")
+    search_service = SearchService.new(params)
+    @search  = search_service.search(Artist, Album, AudioFile)
+    @q = search_service.opts[:q] || ''
+
+#    respond_to do |format|
+#      format.html
+#    end
+  end
+
+  def search_results
+    Rails.logger.info("Search: #{params}")
+    search_service = SearchService.new(params)
+    @search  = search_service.search(Artist, Album, AudioFile)
+    @q = search_service.opts[:q] || ''
+
+#    respond_to do |format|
+#      format.html
+#    end
+  end
+
+  def search0
     Rails.logger.info("Search: #{params}")
     @q = params[:q] || ''
 

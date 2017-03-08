@@ -1,0 +1,14 @@
+-# inputs: nodetree, node_id
+
+- object = nodetree.create_struct(node_id)
+- children = nodetree.children(node_id)
+- list_node = nodetree.list_node(node_id)
+
+.row.playlist-row{ class: object.class_name.downcase }
+  .col-sm-12.playlist-col
+    .playlist-elem
+      = render partial: "#{object.class_name.tableize}/controls", locals: { list_node: list_node }
+      = render partial: "#{object.class_name.tableize}/elem_playlist", locals: { elem: object }
+    - children.each do |nid|
+      = render partial: 'playlists/node', locals: { nodetree: nodetree, node_id: nid }
+  

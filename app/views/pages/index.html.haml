@@ -1,21 +1,14 @@
-%h1 Listing pages
+#search-page
+  .container
+    #search-form
+  .container
+    #search-results
 
-%table
-  %thead
-    %tr
-      %th Title
-      %th
-      %th
-      %th
+#home-page
+  .jumbotron      
+    .container
+      #home-display
 
-  %tbody
-    - @pages.each do |page|
-      %tr
-        %td= page.title
-        %td= link_to 'Show', page
-        %td= link_to 'Edit', edit_page_path(page)
-        %td= link_to 'Destroy', page, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Page', new_page_path
+#playlist-page
+  .container
+    #playlist

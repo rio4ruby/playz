@@ -1,0 +1,20 @@
+// Place all the styles related to the ListNodes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.listnode-sortable-placholder  {
+    background: orange;
+
+}
+
+#liel {
+    ul.cont {
+        padding: 1em;
+        border: 1px solid purple;
+        margin: 1em;
+    }
+    li.cont-elem {
+        padding: 1em;
+        border: 1px solid green;
+        margin: 1em;
+    }
+}

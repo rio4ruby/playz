@@ -1,3 +1,10 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#pages {
+    h1 {
+        color: #dd2222;
+        text-shadow: 2px 2px #aa1111;
+        letter-spacing: 3px;
+    }
+}

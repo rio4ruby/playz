@@ -2,12 +2,20 @@
 class PagesController < ApplicationController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-
+  
   # GET /pages
   # GET /pages.json
   def index
     @pages = Page.all
   end
+
+  def search
+    @name = 'search'
+  end
+
+  def home
+  end
+
 
   # GET /pages/1
   # GET /pages/1.json

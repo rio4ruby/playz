@@ -1,0 +1,16 @@
+.image.float-left
+  = link_to image_tag("note-blue-32.png"), add_audio_file_path(elem.id), :remote => true, :title => "Add '#{elem.song_name}' to Playing"
+.data{ "data-sound_id" => "sound_id-audio_file-#{elem.id}", :class => "sound_id-AudioFile"}
+  .duration.float-right
+    = Time.at(elem.length).strftime("%M:%S").sub(/^0/,'')
+  .tracknum
+    = elem.tracknum
+  .song
+    = elem.song_name
+  .artist.float-left
+    = elem.artist_name
+  .album.float-right
+    = elem.album_name
+  .url
+    = link_to "#{elem.song_name} - #{elem.artist_name}",elem.url,:remote => true, :class => 'audiofile-link'
+  

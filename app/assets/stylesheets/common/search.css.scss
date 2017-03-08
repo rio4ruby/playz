@@ -1,0 +1,308 @@
+#lyricside {
+    padding: 1em;
+    h3 {
+        font-size: 200%;
+        text-shadow: 1px 2px #ccc;
+        margin-bottom: 0.5em;
+    }
+}
+#wikiside-wrapper {
+    border: 1px solid #aaf;
+    background-color: #f8f8ff;
+    border-radius: 12px;
+    padding: 1em;
+    #wikiside {
+        table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .wiki-artist {
+            display: none;
+        }
+        .wiki-artist-active {
+            display: block;
+        }
+    }
+}
+
+.sidebar {
+    h5 {
+        text-align: center;
+        margin-bottom: 0.5em;
+        background-color: #ddd;
+        padding: 0.2em;
+    }
+    aside {
+        margin-bottom: 1em;
+    }
+    aside.albums {
+        height: 300px;
+        border: 1px solid #eee;
+    }
+    aside.artists {
+        height: 300px;
+        border: 1px solid #eee;
+    }
+    li {
+        line-height: 14px;
+    }
+    p {
+        margin: 0 0 3px;
+    }
+}
+.search-form-wrapper {
+    position:relative;
+    i {
+        position: absolute;
+        right: 6px;
+        top: 30%;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+}
+
+
+
+#search-options {
+    input {
+        display: none;
+    }
+}
+footer.sr-pagination {
+    text-align: center;
+    ul.pagination {
+        text-align: center;
+        height: 24px;
+        margin: 12px 0;
+        display: inline-block;
+        li {
+            line-height: 13px;
+            a {
+                -moz-border-bottom-colors: none;
+                -moz-border-image: none;
+                -moz-border-left-colors: none;
+                -moz-border-right-colors: none;
+                -moz-border-top-colors: none;
+                border-color: #DDDDDD;
+                border-style: solid;
+                border-width: 1px 1px 1px 0;
+                float: left;
+                line-height: 24px;
+                padding: 0 7px;
+                text-decoration: none;
+            }
+        }
+        li.active {
+            a {
+                background-color: #08f;
+                color: #eee;
+            }
+        }
+        li:first-child a {
+            border-left-width: 1px;
+            border-radius: 3px 0 0 3px;
+        }       
+    }
+    font-size: 90%;
+}
+
+
+.hit-cont.AudioFile {
+    .elem-image {
+        float: left;
+        margin-right: 1em;
+        img {
+            height: 24px;
+        }
+    }
+    .elem-data {
+        color: #888;
+        .song {
+            font-weight: bold;
+        }
+        .artist {
+            font-style: italic;
+            float: left;
+        }
+        .album {
+            float: right;
+            
+        }
+        .tracknum {
+            display: none;
+        }
+        .duration {
+            float: right;
+        }
+        
+    }
+}
+.hit-cont.Album {
+    .elem {
+        .elem-image {
+            float: left;
+            margin-right: 1em;
+            img {
+                height: 75px;
+            }
+        }
+        .elem-data {
+            .name {
+                font-size: 130%;
+            }
+        }
+        
+    }
+}
+.hit-cont.Artist {
+    .elem-data {
+        .name {
+            font-size: 130%;
+            font-weight: bold;
+        }
+    }
+    ul {
+        column-count: 3;
+        overflow: auto;
+        li:nth-child(2n+0) {  }
+        li:nth-child(2n+1) { float:  left;
+                             width: 50%; }
+    }
+    li {
+        padding-top: 0.3em;
+        min-height: 32px;
+        overflow: auto;
+        margin-right: 1em;
+        .elem-image {
+            float: left;
+            margin-right: 0.5em;
+            img {
+                height: 32px;
+            }
+        }
+        .elem {
+            .elem-data {
+                .name {
+                    font-size: 100%;
+                }
+            }
+            .elem-content {
+                display: none;
+            }
+        }
+    }
+}
+.hits {
+    .hit-row:nth-child(2n+0) {
+        background-color: #f8f8f8;
+    }
+    &.AudioFile {
+    }
+    .hit-row {
+        padding: 0.5em;
+        display: table;
+        width: 100%;
+        &:hover {
+            background-color: #eee;
+            .hit-cont {
+                .detail-button {
+                    opacity: 0.3;
+                }
+            }
+        }
+        .hit-cont {
+            .detail-button {
+                float: right;
+                font-size: 250%;
+                margin-left: 0.1em;
+                vertical-align: middle;
+                height: 100%;
+                display: table-cell;
+                //opacity: 0.1;
+                width: 16px;
+            }
+            overflow: auto;
+            display: table-row;
+        }
+        .hit-cont {
+            .detail-button {
+                opacity: 0.01;
+                &:hover {
+                    cursor: pointer;
+                    opacity: 1.0;
+                }
+            }
+        }
+        .hit-cont.Artist {
+            li {
+                &:hover {
+                    background-color: #fefefe;
+                    .detail-button {
+                        opacity: 0.3;
+                    }
+                }
+                .detail-button {
+                    font-size: 200%;
+                    opacity: 0.01;
+                    &:hover {
+                        opacity: 1.0;
+                    }
+                }
+            }
+        }
+        .hit-cont.AudioFile {
+            .detail-button {
+                height: 30px;
+                line-height: 30px;
+                width: 0.5em;
+            }
+        }
+        .hit-cont.Album {
+            .detail-button {
+                height: 64px;
+                line-height: 64px;
+                width: 0.5em;
+            }
+        }
+        .score {
+            text-align: right;
+            display: inline-block;
+        }
+        .hit-score {
+            text-align: right;
+            float: right;
+            margin-left: 0.2em;
+            color: #88d;
+            font-size: 70%;
+            display: none;
+        }
+        .image {
+        }
+    }
+}
+
+#sidebar {
+}
+.fixed {  
+    position: fixed;   
+    top: 60px;  
+    right: 30px;
+    //margin-left: 720px;  
+    background-color: #0f0 ! important;
+}
+
+.artist-subname {
+    font-size: 60%;
+    color: #bbb;
+}
+#tab-search {
+    .aside-note {
+        padding: 0px;
+        padding-top: 4px;
+         img {
+            width: 16px;
+        }
+    }
+}

@@ -1,0 +1,4 @@
+$('#playing-playlist').find('.ListHead.listnode-content .listnode-temp').replaceWith("<%= escape_javascript(render(:partial => 'list_nodes/node',:locals => { :nodetree => @nodetree, :node_id => @node_id } )) %>");
+
+$('#playing-playlist').playlist();
+$.event.trigger('playlistchanged');

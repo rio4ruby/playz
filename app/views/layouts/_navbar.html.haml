@@ -6,12 +6,12 @@
   #navbarNav.collapse.navbar-collapse
     %ul.navbar-nav
       %li.nav-item.active
-        %a.nav-link{:href => "#"}
+        %a.nav-link#nav-link-home{:href => "#"}
           Home
           %span.sr-only (current)
       %li.nav-item
-        %a.nav-link{:href => "#"} Features
+        %a.nav-link#nav-link-search{:href => "/home"} Search
       %li.nav-item
-        %a.nav-link{:href => "#"} Pricing
+        %a.nav-link#nav-link-playlist{:href => "/list_nodes"} Playlist
       %li.nav-item
         %a.nav-link.disabled{:href => "#"} Disabled

@@ -1,1 +1,8 @@
-= render :partial => 'home/search_results', :locals => { :q => @q, :search => @search }
+.container
+  #search-form
+    = render :partial => 'home/search_form', :locals => { :q => @q, :search => @search }
+.container
+  #search-results
+    .text-center
+      = image_tag('search-loading.gif')
+    -#= render :partial => 'home/search_results', :locals => { :q => @q, :search => @search }

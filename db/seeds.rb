@@ -15,10 +15,10 @@ end
 
 puts 'SETTING UP DEFAULT USER LOGIN'
 user = create_user('admin@kitatdot.net', 'adminadmin')
-puts 'First user created: ' << user.email
+puts 'First user created: ' + user.email
 
 demo_user = create_user('demo@kitatdot.net', 'demodemo')
-puts 'Demo user created: ' << demo_user.email
+puts 'Demo user created: ' + demo_user.email
 
 puts 'POPULATING DATABASE'
 

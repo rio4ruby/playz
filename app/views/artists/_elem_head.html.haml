@@ -1,6 +1,7 @@
 .name
   = link_to elem.name, artist_path(elem.id), :class => 'link-name'
   %span.subname
-    = '(' + pluralize(elem.audio_files.uniq.count,'track') + ')'
+    = '( ' + pluralize(elem.audio_files.uniq.count,'track') + ' )'
+  &nbsp;
   %span.subname
-    = '(' + pluralize(elem.albums.uniq.count,'album') + ')'
+    = '( ' + pluralize(elem.albums.uniq.count,'album') + ' )'

@@ -1,0 +1,317 @@
+.depth0.listnode-elem {
+    font-size: 100%;
+    .row-fluid [class*="span"] {
+        min-height: 16px;
+    }
+}
+.depth1.listnode-elem {
+    font-size: 90%;
+}
+.depth2.listnode-elem {
+    font-size: 90%;
+}
+.listnode-dbg {
+    display: none;
+    float: left;
+    width: 4em;
+    text-align: left;
+    margin-right: 0.5em;
+}
+.depth0 > .listnode-dbg {
+    width: 4em;
+}
+.depth1 > .listnode-dbg {
+    width: 4em;
+}
+.depth2 > .listnode-dbg {
+    width: 4em;
+}
+
+.AudioFile.listnode-elem {
+    .elem-image {
+        float: left;
+        img {
+            height: 32px;
+        }
+    }
+    .song {
+        font-weight: bold;
+        font-size: 100%;
+    }
+    .album {
+        float: right;
+    }
+    .duration {
+        float: right;
+        margin-left: 1em;
+    }
+    .tracknum {
+        display: none;
+    }
+    .artist {
+        font-style: italic;
+        float: left;
+    }
+    .album {
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.elem, .elem-data {
+    // overflow: auto;
+}
+.elem-data {
+    margin-right: 0.3em;
+    .url {
+        display: none;
+    }
+}
+#playing-playlist .listnode-elem.depth1 {
+    margin-bottom: 4px;
+}
+#playing-playlist .Album.listnode-elem {
+    background-color: #f8fff8;
+}
+#playing-playlist .AudioFile.listnode-elem.depth1 {
+    padding: 2px;
+}
+#playing-playlist .AudioFile.listnode-elem {
+    border: 3px double #eee;
+    background-color: #fffff8;
+    border-radius: 8px;
+    &:hover {
+        border-color: #ddd;
+        background-color: #ffffe8;
+    }
+    .elem-image {
+        display: none;
+    }
+}
+#playing-playlist .AudioFile.listnode-elem.playing {
+    background-color: yellow;
+    border: 3px double #bbb;
+    border-radius: 8px;
+    &:hover {
+        border-color: #888;
+    }
+}
+#playing-playlist .Album.listnode-header .elem.playing .elem-data .name a{
+    text-shadow: 2px 2px 2px yellow;
+    color: black;
+}
+.listnode-controls {
+    display: none;
+}
+#playing-playlist {
+    padding: 4px;
+    border: 1px solid transparent;
+}
+#playing-playlist.player-win-opened {
+    background-color: #EDDFCA;
+    border-color: #ccc;
+}
+
+
+.ListHead.listnode-header {
+    margin-bottom: 0.3em;
+    h2 {
+        text-shadow: 2px 2px #AAAAAA;
+        background-color: #E8E8FF;
+        padding-left: 0.5em;
+        border-bottom: 4px double #004;
+        border-top: 4px double #004;
+    }
+    &>.listnode-controls {
+        top: 8px;
+        right:4px;
+        .listnode-ctl {
+        }
+    }
+    &:hover {
+        .listnode-controls {
+            display: block;
+        }
+    }
+    
+}
+// don't display the remove icon for the currently playing element
+// if the player window is open
+.player-win-opened {
+    .listnode-elem.playing {
+        .listnode-header {
+            .listnode-controls {
+                .icon-remove {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.listnode-header {
+    position: relative;
+    //overflow: auto;
+    background: inherit;
+    
+    &:hover {
+    }
+    .listnode-controls {
+        position: absolute;
+        right: 0em;
+        top: 0px;
+        width: 2.8em;
+        padding-right: 0.1em;
+        background: inherit;
+        a {
+            float: right;
+            opacity: 0.3;
+            &:hover {
+                opacity: 1.0;
+            }
+        }
+    }
+}
+ 
+.ListHead.listnode-content {
+    .elem-image {
+        float: left;
+        margin-right: 0.5em;
+        width: 42px;
+    }
+    .elem-data {
+        .name {
+            font-weight: bold;
+        }
+    }
+    .listnode-elem, .elem {
+        overflow: auto;
+    }
+    .listnode-elem.listnode-temp {
+        background: #fffff5 center no-repeat url("/assets/album-loading.gif");
+        background-size: 100% 100%;
+        .detail-button {
+            display: none;
+        }
+        .tracks, .audio_files {
+            display: none;
+        }
+    }
+    &>.listnode-elem {
+        border: 1px solid #e5e5e5;
+        &:hover {
+            border: 1px solid #aaa;
+        }
+        overflow: auto;
+        position: relative;
+        background-color: white;
+    }
+    .listnode-header {
+        &:hover {
+            .listnode-controls {
+                display: block;
+            }
+        }
+    }
+
+
+
+    &>.Album.listnode-elem {
+        &>.listnode-header {
+            &:hover {
+                background-color: #e5ffe5;
+            }
+            .elem-data {
+                .name {
+                    font-weight: bold;
+                    //font-size: 100%;
+                    a {
+                        text-decoration: none;
+                    }
+                }
+                .artists {
+                    a {
+                        text-decoration: none;
+                        font-style: italic;
+                        
+                    }
+                }
+                
+            }
+            .elem-content {
+                .audio_files { display: none }
+            }
+            .elem-image {
+                img {
+                    height: 42px;
+                }
+            }
+        }
+        &>.listnode-content.single-artist,&>.ui-effects-wrapper .listnode-content.single-artist {
+            &>.AudioFile.listnode-elem {
+                .artist {
+                    display: none;
+                }
+            }
+        }
+        &>.listnode-content,&>.ui-effects-wrapper .listnode-content {
+            //display: none;
+            &>.listnode-elem {
+                &:hover {
+                    background-color: #e5ffe5;
+                }
+            }
+            &>.AudioFile.listnode-elem {
+                font-size: 90%;
+                .elem-image {
+                    display: none;
+                    img {
+                        height: 16px;
+                        
+                    }
+                }
+                .duration {
+                    float: right;
+                    margin-left: 1em;
+                }
+                .album {
+                    display: none;
+                }
+                .tracknum {
+                    float: left;
+                    margin-right: 0.5em;
+                    width: 1.5em;
+                    display: block;
+                    text-align: right;
+                }
+                .song {
+                    float: left;
+                }
+                .artist {
+                    float: right;
+                }
+            }
+        }
+    }
+}
+
+.depth1.Album {
+}
+#node-player {
+}
+
+.black {
+    
+}
+#left-side.drop-highlight {
+    background-color: orange;
+}

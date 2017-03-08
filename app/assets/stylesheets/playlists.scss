@@ -1,0 +1,148 @@
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+$listhead-background: #e8ffff;
+$audiofile-background: #ffe8ff;
+$album-background: #ffffe8;
+
+.playlists {
+    .playlist-elem {
+        position: relative;
+        background: inherit;
+        &:hover {
+            .playlist-controls {
+                display: block;
+            }
+        }
+        .playlist-controls {
+            display: none;
+            position: absolute;
+            right: 0em;
+            top: 0px;
+            width: 3em;
+            background: inherit;
+            .playlist-ctl {
+                /* height: 20px; */
+                /* opacity: 0.3; */
+                /* &:hover { */
+                /*     opacity: 1.0; */
+                /* } */
+            }
+            a {
+                float: right;
+                opacity: 0.3;
+                &:hover {
+                    opacity: 1.0;
+                }
+            }
+        }
+    }
+    .listhead .playlist-controls {
+        background-color: $listhead-background;
+    }
+    .audiofile .playlist-controls {
+        background-color: $audiofile-background;
+    }
+    .album {
+        .audiofile .playlist-controls {
+            background-color: $audiofile-background;
+        }
+        .playlist-controls {
+            background-color: $album-background;
+        }
+    }
+        
+}
+.playlists {
+    .playlist-row {
+        margin: 4px;
+        border: 2px solid #888888;
+        border-radius: 8px;
+        padding: 0.1em;
+    }
+    .listhead {
+        .audiofile {
+            .tracknum,.url {
+                display: none;
+            }
+        }
+        background-color: $listhead-background;
+        &>.playlist-col {
+            &>.playlist-elem {
+            }
+            &>.audiofile {
+                background-color: $audiofile-background;
+                &>.playlist-col {
+
+                    &>.playlist-elem {
+                        min-height: 48px;
+                        &>.image {
+                            img {
+                                height: 32px;
+                            }
+                        }
+                    }
+                }
+            }
+            &>.album {
+                background-color: $album-background;
+                &>.playlist-col {
+                    &>.playlist-elem {
+                        min-height: 60px;
+                        img {
+                            height: 48px;
+                        }
+                    }
+                    &>.audiofile {
+                        display: none;
+                        background-color: $audiofile-background;
+                        &>.playlist-col {
+                            &>.playlist-elem {
+                                .artist, .album {
+                                    display: none;
+                                }
+                                &>.image {
+                                    img {
+                                        height: 24px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.playlists {
+    .listhead {
+        &>p {
+            background-color: #ffd8ff;
+        }
+        &>ul>li>.audiofile {
+            &>p {
+                background-color: #d8d8ff;
+            }
+        }
+        &>ul>li>.album {
+            &>p {
+                border: 1px solid green;
+                background-color: #ffd8d8;
+            }
+            &>ul {
+                display: none;
+                &>li {
+                    &>.audiofile {
+                        &>p {
+                            background-color: #d8ffff;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

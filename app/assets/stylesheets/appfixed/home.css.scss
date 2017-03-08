@@ -1,0 +1,26 @@
+#main-buttons {
+    margin-bottom: 0.5em;
+}
+html {
+    overflow: -moz-scrollbars-vertical;
+}
+body {
+    &>footer {
+        border-top: 1px solid #ddd;
+        margin-top: 1em;
+        text-align: center;
+        color: #888;
+        font-size: 80%;
+    }
+}
+#powered {
+    ul {
+        li {
+            display: inline-block;
+            margin-left: 1em;
+            a {
+                color: #888;
+            }
+        }
+    }
+}
