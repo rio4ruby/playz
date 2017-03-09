@@ -1,0 +1,14 @@
+- list_node = nodes[node_id][:node]
+- children = nodes[node_id][:children]
+- af_node_ids = nodes[:audio_files]
+.listnode-elem{ :id => "pl-list_node-#{list_node.id}",:class => "#{list_node.listable_type} depth#{list_node.ancestry_depth}" }
+
+  .listnode-header{ :class => "#{list_node.listable_type} depth#{list_node.ancestry_depth}" }
+    = render :partial => "#{list_node.listable_type.tableize}/controls", :locals => {:list_node => list_node}
+    .listnode-dbg
+      = "#{list_node.ancestry_depth}-#{list_node.position}"
+    = render :partial => "#{list_node.listable_type.tableize}/elem", :object => list_node.listable
+  - unless children.empty?
+    .listnode-content{ :class => "#{list_node.listable_type} depth#{list_node.ancestry_depth} #{list_node.listable.node_class(list_node)}" }
+      - children.each do |nid|
+        = render :partial => 'list_nodes/node', :locals => { :nodes => nodes, :node_id => nid }

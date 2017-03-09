@@ -1,8 +1,6 @@
-.playlist-controls
-  .playlist-ctl.float-right
-    -#%i.material-icons.md-18 delete
-    = link_to '<i class="material-icons md-18">delete</i>'.html_safe,list_nodes_path(list_node.id), :method => :delete, :title => "Remove From Playlist", :remote => true, :class => "remove-node"
-  .playlist-ctl.float-right
-    -#%i.material-icons.md-18 list    
+.listnode-controls
+  .listnode-ctl.float-right
+    = link_to '<i class="material-icons md-18">delete</i>'.html_safe,list_node_path(id: list_node.id), :method => :delete, :title => "Remove From Playlist", :remote => true, :class => "remove-node"
+  .listnode-ctl.float-right
     = link_to '<i class="material-icons md-18">list</i>'.html_safe,list_nodes_flatten_path(:id => list_node.id), :method => :get, :title => "Move Album tracks to playlist", :remote => true, :class => "flatten-node"
   

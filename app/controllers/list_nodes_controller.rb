@@ -1,7 +1,7 @@
 class ListNodesController < ApplicationController
   before_action :authenticate_user!
 
-  layout Proc.new { |controller| controller.request.xhr? ? false : 'application' }
+  layout Proc.new { |controller| controller.request.xhr? ? false : 'appfixed' }
 
   def move_to
     item_id = record_id(params[:item])
@@ -153,4 +153,11 @@ class ListNodesController < ApplicationController
     end
   end
 
+  private
+
+  def record_id(idstr)
+    idstr.split('-')[-1].to_i if idstr
+  end
+
+  
 end

@@ -1,0 +1,8 @@
+- if Array === liel
+  %ul.cont
+    - liel.each do |el|
+      %li.cont-elem
+        = render :partial => 'liel', :locals => { :liel => el }
+
+- else
+  =liel.inspect

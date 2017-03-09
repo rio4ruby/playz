@@ -1,0 +1,4 @@
+$('#playing-playlist').find('.ListHead.listnode-content').append("<%= escape_javascript(render(:partial => 'list_nodes/node',:locals => { :nodetree => @nodetree, :node_id => @node_id } )) %>");
+
+$.event.trigger('playlistchanged');
+$('#playing-playlist').playlist();

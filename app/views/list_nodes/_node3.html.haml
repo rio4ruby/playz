@@ -1,0 +1,48 @@
+- list_node = nodetree.list_node(node_id)
+- children = nodetree.children(node_id)
+- playdata_class = list_node_playdata_class(list_node)
+- playdata_data = list_node_playdata_data(list_node)
+.listnode-elem{ :id => "pl-list_node-#{list_node.id}", :class => "#{list_node.listable_type} depth#{list_node.ancestry_depth} #{playdata_class}", 'data-playdata' => "#{playdata_data}" }
+
+  .listnode-header{ :class => "#{list_node.listable_type} depth#{list_node.ancestry_depth}" }
+    = render :partial => "#{list_node.listable_type.tableize}/controls", :locals => {:list_node => list_node}
+    = render :partial => "#{list_node.listable_type.tableize}/elem", :object => nodetree.create_struct(node_id)
+  - unless children.empty?
+    - if list_node.listable_type == 'Album'
+      - artist_count_class = nodetree.n_child_artists(node_id) == 1 ? 'single-artist' : 'multi-artist'
+    - else
+      - artist_count_class = ''
+    .listnode-content{ :class => "#{list_node.listable_type} depth#{list_node.ancestry_depth} #{artist_count_class}" }
+      - children.each do |node_id2|
+
+        - list_node2 = nodetree.list_node(node_id2)
+        - children2 = nodetree.children(node_id2)
+        - playdata_class2 = list_node_playdata_class(list_node2)
+        - playdata_data2 = list_node_playdata_data(list_node2)
+        .listnode-elem{ :id => "pl-list_node-#{list_node2.id}", :class => "#{list_node2.listable_type} depth#{list_node2.ancestry_depth} #{playdata_class2}", 'data-playdata' => "#{playdata_data2}" }
+
+          .listnode-header{ :class => "#{list_node2.listable_type} depth#{list_node2.ancestry_depth}" }
+            = render :partial => "#{list_node2.listable_type.tableize}/controls", :locals => {:list_node => list_node2}
+            = render :partial => "#{list_node2.listable_type.tableize}/elem", :object => nodetree.create_struct(node_id2)
+            - unless children2.empty?
+              - if list_node2.listable_type == 'Album'
+                - artist_count_class = nodetree.n_child_artists(node_id2) == 1 ? 'single-artist' : 'multi-artist'
+              - else
+                - artist_count_class = ''
+              .listnode-content{ :class => "#{list_node2.listable_type} depth#{list_node2.ancestry_depth} #{artist_count_class}" }
+                - children2.each do |node_id3|
+
+
+
+                  - list_node3 = nodetree.list_node(node_id3)
+                  - children3 = nodetree.children(node_id3)
+                  - playdata_class3 = list_node_playdata_class(list_node3)
+                  - playdata_data3 = list_node_playdata_data(list_node3)
+                  .listnode-elem{ :id => "pl-list_node-#{list_node3.id}", :class => "#{list_node3.listable_type} depth#{list_node3.ancestry_depth} #{playdata_class3}", 'data-playdata' => "#{playdata_data3}" }
+
+                    .listnode-header{ :class => "#{list_node3.listable_type} depth#{list_node3.ancestry_depth}" }
+                      = render :partial => "#{list_node3.listable_type.tableize}/controls", :locals => {:list_node => list_node3}
+                      = render :partial => "#{list_node3.listable_type.tableize}/elem", :object => nodetree.create_struct(node_id3)
+                            
+
+                  

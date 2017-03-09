@@ -1,0 +1,4 @@
+console.log("list_nodes/destroy.js.erb");
+$('#pl-list_node-' + "<%= @node_id %>").remove();
+
+$.event.trigger('playlistchanged');

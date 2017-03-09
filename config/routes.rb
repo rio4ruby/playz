@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   get "list_nodes/move_to"
   get "list_nodes/add_to_playing"
   post "list_nodes/playlist_playable_items"
-  resources :list_nodes, only: [:index]
+  resources :list_nodes, only: [:index, :destroy]
 
   root to: 'home#index'
 end

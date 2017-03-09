@@ -1,0 +1,4 @@
+- nodetree.audio_file_list_nodes.each do |list_node|
+  - item_class = (playing_playdata =~ /list_node-#{list_node.id}/ ? 'active' : '')
+  .item{ :id => "item-list_node-#{list_node.id}", :class => "#{item_class}"}
+    = render :partial => "list_nodes/node", :locals => { :nodetree => nodetree, :node_id => list_node.id }

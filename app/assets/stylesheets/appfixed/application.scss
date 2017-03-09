@@ -8,17 +8,24 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require jquery.ui.core
- *= require jquery.ui.theme
- *= require jquery.ui.slider
+ *= require jquery-ui/core
+ *= require jquery-ui/theme
+ *= require jquery-ui/slider
+ *= require jquery-ui/draggable
  *= require_self
- *= require ./appfixed/home
- *= require ./common/bootstrap_and_overrides
- *= require ./common/playlist
- *= require ./common/list_nodes
+ *= #require ./appfixed/home
+ *= #require ./common/playlist
+ *= #require ./common/list_nodes
  *= # require_tree ./common
  *= # require_tree ./appfixed
-*/
+ */
+@import "bootstrap";
+body{ padding-top: 60px; }
+@import "./appfixed/home";
+@import "./common/playlist";
+@import "./common/list_nodes";
+
+
 
 .content {
   background-color: #eee;

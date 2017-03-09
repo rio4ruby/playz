@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 class HomeController < ApplicationController
   layout proc { |controller| controller.request.xhr? ? false : 'application' }
+  layout 'appfixed', only: 'playlist'
   before_action :authenticate_user!
 
   def index
