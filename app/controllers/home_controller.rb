@@ -29,36 +29,24 @@ class HomeController < ApplicationController
     end
   end
 
-  def home
+  def home; end
 
-  end
-
-  def search_results
-    @search = SearchService.search(params, Album, Artist, AudioFile)
-
-  end
-
-  
   def search
     Rails.logger.info("Search: #{params}")
     search_service = SearchService.new(params)
-    @search  = search_service.search(Artist, Album, AudioFile)
+    @search = search_service.search(Artist, Album, AudioFile)
     @q = search_service.opts[:q] || ''
-
-#    respond_to do |format|
-#      format.html
-#    end
   end
 
   def search_results
     Rails.logger.info("Search: #{params}")
     search_service = SearchService.new(params)
-    @search  = search_service.search(Artist, Album, AudioFile)
+    @search = search_service.search(Artist, Album, AudioFile)
     @q = search_service.opts[:q] || ''
 
-#    respond_to do |format|
-#      format.html
-#    end
+    #    respond_to do |format|
+    #      format.html
+    #    end
   end
 
   def search0

@@ -71,6 +71,7 @@
                 list: ui.item.parent().closest('.listnode-elem').attr('id'),
                 index: ui.item.index()
             };
+            console.log(data);
             $.getJSON("/list_nodes/move_to",data);
             $.event.trigger('playlistchanged');
         },
