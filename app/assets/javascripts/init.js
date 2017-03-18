@@ -15,6 +15,7 @@ $(document).ready(function() {
     }).done( function(data, textStatus, jqXHR) {
         $('#search-form-page').html(data);
         init_watchfield();
+        init_query_click();
         $('#search-form input').val($.querystring.q);
     });
 
