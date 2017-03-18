@@ -8,7 +8,7 @@ class Song < ApplicationRecord
   has_many :lyrics, dependent: :nullify
 
   validates :name, presence: true, uniqueness: true
-
+  
   searchable auto_index: true, auto_remove: true do
     integer :id
 

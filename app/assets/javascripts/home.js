@@ -50,11 +50,11 @@ function init_navclicks() {
 
 
 $(document).ready(function() {
-    console.log($.querystring.q);
-    init_navclicks();
-    //show_search_results($.querystring.q);
-    //init_query_click();
-    //init_watchfield();
-    //init_popstate();
-    $('#search-form input').val($.querystring.q);
+    // console.log($.querystring.q);
+    // init_navclicks();
+    // //show_search_results($.querystring.q);
+    // //init_query_click();
+    // //init_watchfield();
+    // //init_popstate();
+    // $('#search-form input').val($.querystring.q);
 });

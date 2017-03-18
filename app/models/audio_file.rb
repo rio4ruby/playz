@@ -11,9 +11,9 @@ class AudioFile < ApplicationRecord
   has_many :list_nodes, as: :listable
 
   validates :tracknum, numericality: true, allow_nil: true
-  validates :bitrate, numericality: true
-  validates :samplerate, numericality: true
-  validates :length, numericality: true
+  validates :bitrate, numericality: true, allow_nil: true
+  validates :samplerate, numericality: true, allow_nil: true
+  validates :length, numericality: true, allow_nil: true
   validates :layer, numericality: true, allow_nil: true
   validates :mpeg_version, numericality: true, allow_nil: true
 

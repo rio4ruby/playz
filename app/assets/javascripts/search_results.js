@@ -1,7 +1,7 @@
 
 function show_search_results(parms) {
     var url = '/home/search_results';
-    var params = { q: parms.q };
+    var params = { q: (parms ? parms.q : $.querystring.q) };
     $.get(url,params,function(data,textStatus) {
         console.log("search status=" + textStatus + " url=" + url);
         $('#search-results').html(data);

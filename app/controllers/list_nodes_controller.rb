@@ -7,19 +7,10 @@ class ListNodesController < ApplicationController
   def move_to
     item_id = record_id(params[:item])
     list_id = record_id(params[:list])
-    index = params[:index].to_i
+    position = params[:index].to_i + 1
+
     item = ListNode.find(item_id)
-
-    from_list_id = item.parent_id
-
-    if from_list_id != list_id
-      item.remove_from_list
-      item.parent_id = list_id
-    end
-    item.remove_from_list
-    item.insert_at(index + 1)
-
-    # from_list = ListNode.find(from_list_id)
+    item.move_to(list_id, position)
 
     respond_to do |format|
       format.json { head :no_content }
@@ -44,20 +35,22 @@ class ListNodesController < ApplicationController
 
   def flatten
     node = ListNode.find(params[:id].to_i)
-    pos = node.position
-    child_ids = node.child_ids
-    n_holes = child_ids.size - 1
-    node.siblings.where(['position > ?', pos]).update_all("position = (position + #{n_holes})")
-    to_list_id = node.parent_id
-    Rails.logger.info("flatten: pos = #{pos}")
+    node.parent.flatten(node)
+    
+    # pos = node.position
+    # child_ids = node.child_ids
+    # n_holes = child_ids.size - 1
+    # node.siblings.where(['position > ?', pos]).update_all("position = (position + #{n_holes})")
+    # to_list_id = node.parent_id
+    # Rails.logger.info("flatten: pos = #{pos}")
 
-    node.children.each_with_index do |n, i|
-      n.parent_id = to_list_id
-      n.position = pos + i
-      n.save!
-      Rails.logger.info("  flatten: i=#{i} insert_at=#{pos + i}")
-    end
-    node.delete
+    # node.children.each_with_index do |n, i|
+    #   n.parent_id = to_list_id
+    #   n.position = pos + i
+    #   n.save!
+    #   Rails.logger.info("  flatten: i=#{i} insert_at=#{pos + i}")
+    # end
+    # node.delete
 
     respond_to do |format|
       format.js { head :ok }

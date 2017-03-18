@@ -79,7 +79,7 @@
                 .not('.listnode-clickable')
                 .addClass('listnode-clickable')
                 .click(function() {
-	            $(this).next().toggle('blind','fast');
+	            $(this).next().toggle();
 	            return false;
                 }).next().hide();
         },

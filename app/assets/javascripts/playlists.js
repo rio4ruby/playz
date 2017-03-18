@@ -8,5 +8,5 @@ function init_playlists_albums() {
 }
 
 $(document).ready(function() {
-    init_playlists_albums();
+//    init_playlists_albums();
 });

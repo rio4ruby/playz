@@ -10,6 +10,39 @@ class ListNode < ApplicationRecord
     root.joins(:list_heads).where('list_heads.user_id = ?', user.id)
   }
 
+  def flatten(node)
+    pos = node.position
+    child_ids = node.child_ids
+    n_holes = child_ids.size - 1
+    node.siblings.where(['position > ?', pos]).update_all("position = (position + #{n_holes})")
+    to_list_id = node.parent_id
+    Rails.logger.info("flatten: pos = #{pos}")
+
+    node.children.each_with_index do |n, i|
+      n.parent_id = to_list_id
+      n.position = pos + i
+      n.save!
+      Rails.logger.info("  flatten: i=#{i} insert_at=#{pos + i}")
+    end
+    node.delete
+
+  end
+  
+  def move_to(dest_node_id, pos)
+    # p "id=#{id} dest_node_id=#{dest_node_id} parent.id=#{parent.id} pos=#{pos} position=#{position}"
+
+    remove_from_list
+    
+    unless dest_node_id == parent.id
+      self.parent_id = dest_node_id
+      save!
+    end
+
+    insert_at(pos)
+    save!
+  end
+  
+  
   def create_single_node
     create_nodes([self])
   end

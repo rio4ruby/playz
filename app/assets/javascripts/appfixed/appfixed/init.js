@@ -3,7 +3,7 @@ var init_playing_complete;
 function init_dragdrop_links() {
     console.log("INIT_DRAGDROP_LINKS");
     $('#playing-playlist').addClass('black');
-    $('#left-side').droppable({
+    $('#playlist-cont').droppable({
 	hoverClass: "drop-highlight",
 	tolerance: 'touch',
 	accept: '.playable',

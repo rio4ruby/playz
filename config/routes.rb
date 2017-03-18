@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :home, only: [:index]
   get 'home/home'
   get 'home/search'
+  get 'home/search_form'
   get 'home/search_results'
   get 'home/playlist'
 

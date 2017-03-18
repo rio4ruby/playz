@@ -13,10 +13,18 @@
  */
 @import "bootstrap";
 body{ padding-top: 60px; }
+
+@import "jquery-ui/core";
+@import "jquery-ui/theme";
+@import "jquery-ui/slider";
+@import "jquery-ui/draggable";
+
 @import "pages";
 @import "hits";
 @import "home";
 @import "album";
 @import "artist";
 @import "audio_file";
-
+@import "./appfixed/appfixed/home";
+@import "./appfixed/common/playlist";
+@import "./appfixed/common/list_nodes";

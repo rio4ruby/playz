@@ -2,7 +2,7 @@
 
 .row
   - albs.each do |album|
-    .col-sm-12.col-md-6.col-lg-4.alb-col
+    .col-sm-12.col-md-12.col-lg-6.alb-col
       .image.float-left
         = link_to %{<img src="#{albumart_url(album,'small')}" border="0" />}.html_safe, artist_album_add_path(elem.id,album.id), :remote => true, :title => "Add '#{album.name}' to Playing"
       .name
