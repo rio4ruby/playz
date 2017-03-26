@@ -1,0 +1,32 @@
+#myCarousel.carousel.slide
+
+  / Carousel items
+  .carousel-inner.playlist-items{ role: 'listbox' }
+    = render :partial => "list_nodes/playlist_playable_items", :locals => { :nodetree => nodetree, :node_id => node_id, :playing_playdata => playing_playdata }
+
+    .car-overlay
+      %a.playbutton{:href => '#pb-container' }
+        %i.material-icons play_arrow
+    
+  / Carousel nav
+  %a.carousel-control.left{ :href => "#myCarousel",  'data-slide' => "prev"}
+    &lsaquo;
+  %a.carousel-control.right{ :href => "#myCarousel",  'data-slide' => "next"}
+    &rsaquo;
+
+  / Carousel nav
+  -# %a.carousel-control-prev{ :href => "#myCarousel",  role: 'button' }
+  -#   %span.carousel-control-prev-icon{ 'aria-hidden' => "true" }
+  -#   %span.sr-only Previous
+  -# %a.carousel-control-next{ :href => "#myCarousel",  role: 'button' }
+  -#   %span.carousel-control-next-icon{ 'aria-hidden' => "true" }
+  -#   %span.sr-only Next
+    
+.player-position
+  .player-time.player-time-played
+  .player-time.player-time-remaining
+    
+  .player-position-slider-wrapper
+    .player-position-slider
+
+

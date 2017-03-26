@@ -42,7 +42,7 @@
             var node_id = si.node_id.replace(/^[^-]+-/,'item-');
             var el = $('#' + node_id);
             console.log("carousel _select node_id=" + node_id + " el.length=" + el.length);
-            var idx = el.index('.playlist-items .item');
+            var idx = el.index('.playlist-items .carousel-item');
             console.log("carousel _select idx=" + idx);
             $(this.element).carousel(idx);
         },
@@ -97,21 +97,21 @@
             
 	},
         _next_el: function() {
-            return $(this.element).find('.playlist-items').find('.item.active').next() ||
-                $(this.element).find('.playlist-items').find('.item').first()
+            return $(this.element).find('.playlist-items').find('.carousel-item.active').next() ||
+                $(this.element).find('.playlist-items').find('.carousel-item').first()
         },
         _prev_el: function() {
-            return $(this.element).find('.playlist-items').find('.item.active').prev() ||
-                $(this.element).find('.playlist-items').find('.item').last()
+            return $(this.element).find('.playlist-items').find('.carousel-item.active').prev() ||
+                $(this.element).find('.playlist-items').find('.carousel-item').last()
         },
         _playlistchanged: function() {
             console.log("PLAYLIST changed here");
-            var active_id = $(this.element).find('.playlist-items').find('.item.active').attr('id');
+            var active_id = $(this.element).find('.playlist-items').find('.carousel-item.active').attr('id');
             console.log("PLAYLIST CHANGED: active_id=" + active_id);
             var url = '/list_nodes/playlist_playable_items';
             var data = { active_id: active_id};
             this.element.find('.playlist-items').load(url,data,function() {
-                var items = $(this).find('.item');
+                var items = $(this).find('.carousel-item');
                 $('#status').html("playlistchange: playlist now has " + items.length + " items.");
             });
         },

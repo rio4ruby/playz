@@ -1,0 +1,42 @@
+.player-position {
+    overflow: auto;
+    position: relative;
+    margin-top: 1em;
+    //height: 50px;
+    //background-color: orange;
+    .player-time {
+        font-size: 120%;
+        width: 10%;
+        font-weight: bold;
+    }
+    .player-time-played {
+        text-align: left;
+        float: left;
+    }
+    .player-time-remaining {
+        width: 10%;
+        text-align: right;
+        float: right;
+    }
+    .player-position-slider-wrapper {
+        vertical-align: middle;
+        width: 80%;
+        height: 16px;
+        margin-top: -6px;
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        .ui-slider-horizontal {
+            height: 8px;
+            margin-top: 1px;
+            a.ui-slider-handle {
+                height: 16px;
+                width: 12px;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
