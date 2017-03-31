@@ -5,13 +5,13 @@ RSpec.describe AudioFile, type: :model do
   context :basic do
     let(:file_dir) { FactoryGirl.create(:file_dir, name: '/file/dir/album/audio_file') }
     let(:artist) { FactoryGirl.create(:artist) }
-    let(:album) {
+    let(:album) do
       FactoryGirl.create(:album, album_dir: file_dir.parent, album_artist: artist)
-    }
+    end
     let(:song) { FactoryGirl.create(:song) }
-    let(:audio_file) {
+    let(:audio_file) do
       FactoryGirl.create(:audio_file, file_dir: file_dir, artist: artist, album: album, song: song)
-    }
+    end
     context 'album' do
       it 'is setup' do
         expect(album.audio_files).to include audio_file
@@ -35,5 +35,4 @@ RSpec.describe AudioFile, type: :model do
       end
     end
   end
-  
 end

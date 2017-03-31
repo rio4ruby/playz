@@ -28,7 +28,7 @@ def load_table_cmd(table)
   db_config = Rails.application.config.database_configuration[Rails.env]
   "psql #{pg_args(db_config)} < data/#{table}.sql >/dev/null"
 end
-if !Rails.env.test?
+unless Rails.env.test?
   puts 'POPULATING DATABASE'
 
   tables = %w(artists file_dirs image_files albums songs genres tags audio_files audio_files_tags lyrics)
@@ -37,4 +37,3 @@ if !Rails.env.test?
     system(load_table_cmd(table))
   end
 end
-

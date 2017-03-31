@@ -24,7 +24,6 @@ class Album < ApplicationRecord
     text :name_textp, stored: true, boost: 0.5, as: :name_textp do
       name
     end
-
   end
 
   def album_artist_name

@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   layout proc { |controller| controller.request.xhr? ? false : 'application' }
 
   respond_to :html, :js
-  #layout 'appfixed', only: 'playlist'
+  # layout 'appfixed', only: 'playlist'
   before_action :authenticate_user!
 
   def index
@@ -36,9 +36,9 @@ class HomeController < ApplicationController
   def playlist
     respond_to do |format|
       format.html
-      end
+    end
   end
-  
+
   def search
     Rails.logger.info("Search: #{params}")
     search_service = SearchService.new(params)

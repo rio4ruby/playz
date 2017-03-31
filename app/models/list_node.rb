@@ -25,14 +25,13 @@ class ListNode < ApplicationRecord
       Rails.logger.info("  flatten: i=#{i} insert_at=#{pos + i}")
     end
     node.delete
-
   end
-  
+
   def move_to(dest_node_id, pos)
     # p "id=#{id} dest_node_id=#{dest_node_id} parent.id=#{parent.id} pos=#{pos} position=#{position}"
 
     remove_from_list
-    
+
     unless dest_node_id == parent.id
       self.parent_id = dest_node_id
       save!
@@ -41,8 +40,7 @@ class ListNode < ApplicationRecord
     insert_at(pos)
     save!
   end
-  
-  
+
   def create_single_node
     create_nodes([self])
   end

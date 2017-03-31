@@ -2,7 +2,6 @@
 require 'rails_helper'
 
 RSpec.describe ListNode, type: :model do
-
   context '#flatten' do
     let(:list_head) { FactoryGirl.create(:list_head) }
     let(:file_dir) { FactoryGirl.create(:file_dir, name: '/file/dir/album/audio_file') }
@@ -10,7 +9,7 @@ RSpec.describe ListNode, type: :model do
     let(:album1) { FactoryGirl.create(:album, album_dir: file_dir.parent, album_artist: artist) }
     let(:audio_file1) { FactoryGirl.create(:audio_file, file_dir: file_dir, album: album1) }
     let(:audio_file2) { FactoryGirl.create(:audio_file, file_dir: file_dir, album: album1) }
-    
+
     let(:node_head) { FactoryGirl.create(:list_node, listable: list_head) }
     let!(:node_af1) { node_head.children.create(listable: audio_file1, position: 1) }
     let!(:node_af2) { node_head.children.create(listable: audio_file2, position: 2) }
@@ -28,7 +27,7 @@ RSpec.describe ListNode, type: :model do
       expect(node_album1_af1.position).to eq 1
       expect(node_album1_af2.position).to eq 2
     end
-    
+
     context 'flattens' do
       before do
         node_head.flatten(node_album1)
@@ -43,7 +42,7 @@ RSpec.describe ListNode, type: :model do
       end
     end
   end
-  
+
   context '#move_to' do
     let(:list_head) { FactoryGirl.create(:list_head) }
     let(:file_dir) { FactoryGirl.create(:file_dir, name: '/file/dir/album/audio_file') }
@@ -51,7 +50,7 @@ RSpec.describe ListNode, type: :model do
     let(:album1) { FactoryGirl.create(:album, album_dir: file_dir.parent, album_artist: artist) }
     let(:audio_file1) { FactoryGirl.create(:audio_file, file_dir: file_dir, album: album1) }
     let(:audio_file2) { FactoryGirl.create(:audio_file, file_dir: file_dir, album: album1) }
-    
+
     let(:node_head) { FactoryGirl.create(:list_node, listable: list_head) }
     let!(:node_af1) { node_head.children.create(listable: audio_file1, position: 1) }
     let!(:node_af2) { node_head.children.create(listable: audio_file2, position: 2) }
@@ -62,7 +61,7 @@ RSpec.describe ListNode, type: :model do
       expect(node_af1.position).to eq 1
       expect(node_af2.position).to eq 2
     end
-    
+
     context 'moves' do
       context 'to another list' do
         let!(:node_album1) { node_head.children.create(listable: album1, position: 3) }
@@ -81,9 +80,9 @@ RSpec.describe ListNode, type: :model do
 
         context 'to parent' do
           before do
-            node_album1_af2.move_to(node_head.id,1)
+            node_album1_af2.move_to(node_head.id, 1)
           end
-          
+
           it 'changes parent' do
             expect(node_album1_af2.parent).to eq node_head
           end
@@ -105,12 +104,11 @@ RSpec.describe ListNode, type: :model do
             expect(node_album1.child_ids).to_not include node_album1_af2.id
           end
         end
-
       end
 
       context 'forward' do
         before do
-          node_af1.move_to(node_head.id,2)
+          node_af1.move_to(node_head.id, 2)
         end
         it 'retains parent' do
           expect(node_af1.parent).to eq node_head
@@ -126,7 +124,7 @@ RSpec.describe ListNode, type: :model do
 
       context 'back' do
         before do
-          node_af2.move_to(node_head.id,1)
+          node_af2.move_to(node_head.id, 1)
         end
         it 'retains parent' do
           expect(node_af1.parent).to eq node_head
@@ -140,10 +138,7 @@ RSpec.describe ListNode, type: :model do
         end
       end
     end
-    
   end
-
-
 
   context :basic do
     let(:list_head) { FactoryGirl.create(:list_head) }
@@ -155,7 +150,6 @@ RSpec.describe ListNode, type: :model do
     let(:audio_file2) { FactoryGirl.create(:audio_file, file_dir: file_dir, album: album1) }
     let(:audio_file3) { FactoryGirl.create(:audio_file, file_dir: file_dir, album: album1) }
     let(:audio_file4) { FactoryGirl.create(:audio_file, file_dir: file_dir, album: album1) }
-
 
     let(:node_head) { FactoryGirl.create(:list_node, listable: list_head) }
     let(:node_af2) { node_head.children.create(listable: audio_file2, position: 1) }
@@ -171,13 +165,13 @@ RSpec.describe ListNode, type: :model do
     end
 
     context 'album' do
-      it "is child of listhead" do
+      it 'is child of listhead' do
         expect(node_head.children).to include node_album1
         expect(node_head.children.first.listable).to eq album1
         expect(node_album1.parent.listable).to eq list_head
       end
       context 'audio_file' do
-        it "is child of album" do
+        it 'is child of album' do
           expect(node_album1.children).to include node_album1_af1
           expect(node_album1.children.first.listable).to eq audio_file1
           expect(node_album1_af1.parent.listable).to eq album1
@@ -185,7 +179,7 @@ RSpec.describe ListNode, type: :model do
       end
     end
     context 'audio_file' do
-      it "is child of head" do
+      it 'is child of head' do
         expect(node_head.children).to include node_af2
         expect(node_af2.parent.listable).to eq list_head
       end

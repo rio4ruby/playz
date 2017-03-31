@@ -2,7 +2,6 @@
 require 'rails_helper'
 
 RSpec.describe FileDir, type: :model do
-
   describe 'basics' do
     let(:dir_name) { '/file/dir' }
     let(:file_dir) { FactoryGirl.create(:file_dir, name: dir_name) }
@@ -14,5 +13,4 @@ RSpec.describe FileDir, type: :model do
       expect(FileDir.where(name: '/').first).to_not be_nil
     end
   end
-
 end

@@ -36,7 +36,7 @@ class ListNodesController < ApplicationController
   def flatten
     node = ListNode.find(params[:id].to_i)
     node.parent.flatten(node)
-    
+
     # pos = node.position
     # child_ids = node.child_ids
     # n_holes = child_ids.size - 1
