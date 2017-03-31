@@ -91,7 +91,7 @@ function init_playing() {
 $(document).ready(function() {
     if(!init_playing_complete) {
         init_playing_complete = true;
-        init_playing();
         init_nodeplayer();
+        init_playing();
     }
 });

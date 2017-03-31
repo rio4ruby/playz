@@ -12,15 +12,16 @@
             this._infos = {};
             this._bind_events();
 
-            $.event.trigger('volumechanged',{ value: this._volume });
+            $('.volumechanged').trigger('volumechanged',{ value: this._volume });
             this._init_playing_el();
             
+            this.element.addClass('playcontrol pausecontrol');
 	    // remember this instance
 	    $.ui.nodeplayer.instances.push(this.element);
         },
         _playing_el: function() {
             var playing_el = $(this.element).find('.active').first();
-            console.log("PLAYING_EL=" + playing_el);
+            // console.log("PLAYING_EL=" + playing_el.html());
             return playing_el;
         },
         _init_playing_el: function() {
@@ -76,10 +77,10 @@
             }
         },
         _set_playing: function(el,doplay) {
-            //console.log("_set_playing el=" + o2s(el));
+            console.log("_set_playing el=" + o2s(el));
 
             var si = this._sound_info_from_element(el);
-            //console.log("_set_playing url=" + si.url);
+            console.log("_set_playing url=" + si.url);
             this._set_playing_si(si,doplay);
         },
         _set_playing_si: function(si,doplay) {
@@ -113,7 +114,7 @@
                 this._next_sound_id = null;
                 this.element.one('playplayer',function() {
                     console.log("CAUGHT playplayer");
-                    $.event.trigger('nextplayer.nodeplayer');
+                    $('.nextplayer').trigger('nextplayer.nodeplayer');
                     $np._trigger_selected();
                 });
                 this.play();
@@ -211,7 +212,7 @@
                             //console.log("nodeplayer onplay trigger onplayplayer");
                             this.setVolume($pl._volume);
                             //$.event.trigger('onplayplayer');
-                            $.event.trigger( 'playplayer' );
+                            $('.playplayer').trigger( 'playplayer' );
                             $pl.sendpos(smsound.position);
 		        },
 		        onfinish: function() {
@@ -244,17 +245,17 @@
                     });
                     console.log("nodeplayer.play 1: paused=" + smsound.paused);
                     if( smsound.paused ) {
-                        $.event.trigger('pauseplayer');
+                        $('.pauseplayer').trigger('pauseplayer');
                     }
                 }
                 else {
                     smsound.togglePause();
                     console.log("nodeplayer.play 2: paused=" + smsound.paused);
                     if( smsound.paused ) {
-                        $.event.trigger('pauseplayer');
+                        $('.pauseplayer').trigger('pauseplayer');
                     }
                     else {
-                        $.event.trigger('playplayer');
+                        $('.playplayer').trigger('playplayer');
                     }
                 }
             }
@@ -279,45 +280,47 @@
             return this._sounds[this._sound_id];
         },
         _bind_events: function() {
+            console.log('nodeplayer: _bind_events');
             var $pl = this;
-            this.element.bind('mutecontrol',function(event) {
+            this.element.on('mutecontrol',function(event) {
                 $pl._mute = true;
                 $pl.mute();
             });
-            this.element.bind('unmutecontrol',function(event) {
+            this.element.on('unmutecontrol',function(event) {
+                console.log('UNMUTECONTROL');
                 $pl._mute = false;
                 $pl.mute();
             });
-            this.element.bind('playcontrol',function(event) {
+            this.element.on('playcontrol',function(event) {
                 console.log('PLAYCONTROL');
                 $pl.play();
             });
-            this.element.bind('pausecontrol',function(event) {
+            this.element.on('pausecontrol',function(event) {
                 console.log('PAUSECONTROL');
                 $pl.play();
             });
-            this.element.bind('stopcontrol',function(event) {
+            this.element.on('stopcontrol',function(event) {
                 $pl.stop();
             });
-            this.element.bind('trackcontrol',function(event,ui) {
+            this.element.on('trackcontrol',function(event,ui) {
                 console.log("nodeplayer: caught trackcontrol");
                 $pl.track(ui);
             });
-            this.element.bind('next',function(event) {
+            this.element.on('next',function(event) {
                 //$pl.next();
             });
-            this.element.bind('prev',function(event) {
+            this.element.on('prev',function(event) {
                 //$pl.prev();
             });
-            this.element.bind('finished',function(event) {
+            this.element.on('finished',function(event) {
                 //$pl.next();
             });
-            this.element.bind('positioncontrol',function(event,ui) {
+            this.element.on('positioncontrol',function(event,ui) {
                 console.log('nodeplayer: positionchanged value=' + ui.value + " sound_id=" + $pl._sound_id)
                 var smsound = $pl._smsound();
                 smsound.setPosition(ui.value);
             });
-            this.element.bind('volumecontrol',function(event,ui) {
+            this.element.on('volumecontrol',function(event,ui) {
                 var smsound = $pl._smsound();
                 //console.log('nodeplayer: volumechanged: ' + ui.value + " pl._volume=" + $pl._volume + " smsound.volume=" + smsound.volume)
                 $pl._volume = ui.value;

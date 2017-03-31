@@ -3,23 +3,29 @@
     $.widget("ui.playbutton", {
 	options: {
             init: function(event,ui) {
-                //console.log("event=" + event + " ui=" + ui + " id=" + ui.element.attr('id'));
-                $(ui.element).find('i').removeClass('icon-pause').addClass('icon-play');
+                console.log("event=" + event + " ui=" + ui + " id=" + ui.element.attr('id'));
+                console.log($(ui.element).parent().html());
+                $(ui.element).find('i').text('play_arrow');
+                console.log($(ui.element).find('i').text());
             },
             playing: function(event,ui) {
                 console.log('options.playing')
-                $(ui.element).find('i').removeClass('icon-play').addClass('icon-pause');
+                $(ui.element).find('i').text('pause');
+                console.log($(ui.element).find('i').text());
             },
             paused: function(event,ui) {
                 console.log('options.paused')
-                $(ui.element).find('i').removeClass('icon-pause').addClass('icon-play');
+                $(ui.element).find('i').text('play_arrow');
+                console.log($(ui.element).find('i').text());
             }
         },
         
 	_create: function(){
             console.log("playbutton:_create");
 	    // by default, not playing.
-            $(this).html('<i class="icon-play"></i>');
+            //$(this).html('<i class="icon-play"></i>');
+            $(this).find('i').text('play_arrow');
+            this.element.addClass('playplayer pauseplayer stopplayer');
 	    this._setState('paused')
             this._initDisplay();
             this._bind_events();
@@ -30,26 +36,27 @@
             var $pb = this;
             this.element.bind('click.playbutton',function(event) {
                 //$.event.trigger($pb.isPlaying() ? "pause" : "play");
+                event.preventDefault();
                 var el = $(this).html();
                 console.log("CLICK here isPlaying=" + $pb.isPlaying() + " el=" + el);
                 if( $pb.isPlaying() ) {
                     console.log("triggering pausecontrol.playbutton");
-                    $.event.trigger("pausecontrol.playbutton");
+                    $('.pausecontrol').trigger("pausecontrol");
                 }
                 else {
-                    console.log("triggering playcontrol.playbutton");
-                    $.event.trigger("playcontrol.playbutton");
+                    console.log("playbutton: triggering playcontrol");
+                    $('.playcontrol').trigger("playcontrol");
                 }
             });
-            this.element.bind('playplayer',function(event) {
+            this.element.on('playplayer',function(event) {
                 console.log("playbutton: caught playplayer");
                 $pb.play();
             });
-            this.element.bind('pauseplayer',function(event) {
+            this.element.on('pauseplayer',function(event) {
                 console.log("playbutton: caught pauseplayer");
                 $pb.pause();
             });
-            this.element.bind('stopplayer',function(event) {
+            this.element.on('stopplayer',function(event) {
                 $pb.pause();
             });
 

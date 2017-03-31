@@ -24,7 +24,7 @@
 //= require_directory .
 //= require appfixed/common/jquery.cookie
 //= require player/jquery.ui.playcarousel
-//= require appfixed/common/jquery.ui.playbutton
+//= require player/jquery.ui.playbutton
 //= require appfixed/common/jquery.ui.eventposter
 //= require appfixed/common/util
 //= require appfixed/common/postmessage
