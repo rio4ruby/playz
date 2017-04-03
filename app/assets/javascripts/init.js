@@ -10,6 +10,14 @@ $(document).ready(function() {
     // $('#home-page').html('<h4>Home</h4>');
     // $('#search-page').load('/home/search');
     // $('#search-page').html('<h4>Search</h4>');
+
+    $.ajax({
+        url: '/player/simple'
+    }).done( function(data, textStatus, jqXHR) {
+        $('#player').html(data);
+        //$('#player-page').html('<h1>Player Page</h1>');
+    });
+
     $.ajax({
         url: '/home/search_form'
     }).done( function(data, textStatus, jqXHR) {

@@ -11,6 +11,7 @@
             this._secs = 0;
             this._priorsecs = 0;
             this._slidesecs = 0;
+            this.element.addClass('durationplayer pauseplayer stopplayer trackplayer positionplayer');
             
 	    // by default, not playing.
             this.element.slider({
@@ -26,7 +27,7 @@
                 stop: function(event,ui) {
                     var max = $ps.element.slider("option","max");
                     console.log("slider STOP ui.value=" + ui.value + " interval_id=" + $ps._interval_id), " max=" + max;
-                    $.event.trigger('positioncontrol',ui);
+                    $('.positioncontrol').trigger('positioncontrol',ui);
                     $ps._sliding = false;
                     if( $ps._restart_interval ) {
                         $ps._interval_start();
@@ -46,16 +47,43 @@
                     if( $ps._secs != $ps._priorsecs ) {
                         $ps._priorsecs = $ps._secs;
                         $('.player-time-played').html(ms2str(ui.value));
-                        //console.log("change max=" + max + " val=" + ui.value + " max-val=" + (max - ui.value) + " ms2str=" + ms2str(max - ui.value));
+                        // console.log("change max=" + max + " val=" + ui.value + " max-val=" + (max - ui.value) + " ms2str=" + ms2str(max - ui.value));
                         $('.player-time-remaining').html(ms2str(max - ui.value));
                     }
                 }
             });
-
+            
             this._bind_events();
             
 	    // remember this instance
 	    $.ui.playslider.instances.push(this.element);
+	},
+        _bind_events: function() {
+            var $ps = this;
+            var $el = this.element;
+            this.element.on('durationplayer',function(event,ui) {
+                $el.slider('option','max',ui.max);
+                $ps._max = ui.max;
+            });
+            this.element.on('pauseplayer',function(event,ui) {
+                $ps._interval_clear();
+            });
+            this.element.on('stopplayer',function(event,ui) {
+                $ps._interval_clear();
+            });
+            this.element.on('trackplayer',function(event,ui) {
+                $ps.reset(ui.sound_info);
+            });
+            this.element.on('positionplayer',function(event,ui) {
+                if( !$ps._sliding ) {
+                    console.log('playslider: positionplayer value=' + ui.value + " _pos=" + $ps._pos + " interval_id=" + $ps._interval_id);
+                    $ps._interval_clear();
+                    $el.slider('value',ui.value);
+                    $ps._interval_start(ui.value);
+                }
+            });
+        },
+	_init: function(){
 	},
         reset: function(si) {
             this._sliding = false;
@@ -105,33 +133,6 @@
             this._interval_id = setInterval(intervalHandler,inc);
         },
         
-        _bind_events: function() {
-            var $ps = this;
-            var $el = this.element;
-            this.element.bind('durationplayer',function(event,ui) {
-                $el.slider('option','max',ui.max);
-                $ps._max = ui.max;
-            });
-            this.element.bind('pauseplayer',function(event,ui) {
-                $ps._interval_clear();
-            });
-            this.element.bind('stopplayer',function(event,ui) {
-                $ps._interval_clear();
-            });
-            this.element.bind('trackplayer',function(event,ui) {
-                $ps.reset(ui.sound_info);
-            });
-            this.element.bind('positionplayer',function(event,ui) {
-                if( !$ps._sliding ) {
-                    //console.log('playslider: positionplayer value=' + ui.value + " _pos=" + $ps._pos + " interval_id=" + $ps._interval_id);
-                    $ps._interval_clear();
-                    $el.slider('value',ui.value);
-                    $ps._interval_start(ui.value);
-                }
-            });
-        },
-	_init: function(){
-	},
         
 	destroy: function(){
 	    // remove this instance from $.ui.playslider.instances

@@ -4,7 +4,7 @@ function init_nodeplayer() {
     $('#the-player').smplayer({
         sm2ready: function() {
             console.log("#the-player: sm2ready()");
-            $.event.trigger('sm2ready');
+            $('.sm2ready').trigger('sm2ready');
             $('.player-position-slider').playslider({
                 max: 100,
                 value: 48
@@ -51,26 +51,26 @@ function init_playing() {
 
     $('.playbutton').playbutton();
     $('.prevbutton').click(function(e) {
-        $.event.trigger('prevcontrol');
+        $('.prevcontrol').trigger('prevcontrol');
     });
     $('.nextbutton').click(function(e) {
         console.log('CLICK .nextbutton');
         e.preventDefault();
-        $.event.trigger('nextcontrol');
+        $('.nextcontrol').trigger('nextcontrol');
     });
     $('.carousel-control-prev').click(function(e) {
         console.log('CLICK .carousel-control-prev');
         e.preventDefault();
-        $.event.trigger('prevcontrol');
+        $('.prevcontrol').trigger('prevcontrol');
     });
     $('.carousel-control-next').click(function(e) {
         console.log('CLICK .carousel-control-next');
         e.preventDefault();
-        $.event.trigger('nextcontrol');
+        $('.nextcontrol').trigger('nextcontrol');
     });
        
     $(window).unload(function() {
-        $.event.trigger('closingplayer');
+        $('.closingplayer').trigger('closingplayer');
     });
 
     $('#status').html("Player Ready");

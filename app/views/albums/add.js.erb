@@ -2,4 +2,4 @@ $('#playing-playlist').find('.ListHead.listnode-content .listnode-temp').replace
 
 console.log("add.js.erb: before playlist()")
 $('#playing-playlist').playlist();
-$.event.trigger('playlistchanged');
+$('.playlistchanged').trigger('playlistchanged');

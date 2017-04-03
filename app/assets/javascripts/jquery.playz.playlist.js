@@ -8,6 +8,7 @@
             var $pl = this;
             console.log("playlist:_create");
 	    // by default, not playing.
+            this.element.addClass('playlistchanged trackplayer');
             this._bind_events();
             this._load(function() {
                 console.log("");
@@ -72,7 +73,7 @@
                 index: ui.item.index()
             };
             $.getJSON("/list_nodes/move_to",data);
-            $.event.trigger('playlistchanged');
+            $('.playlistchanged').trigger('playlistchanged');
         },
         _bind_header_click: function() {
             this.element.find('.listnode-header.ListHead,.listnode-header.Album')
@@ -91,7 +92,7 @@
                     console.log("listnode-elem.AudioFile DBLCLICK");
 	            var playdata = $(this).attr('data-playdata');
                     $.cookie('playing', playdata, { expires: 7, path: '/' });
-                    $.event.trigger('trackcontrol',{ playdata: playdata });
+                    $('.trackcontrol').trigger('trackcontrol',{ playdata: playdata });
                     $pl._mark_playing();
 	            return false;
                 });
@@ -107,7 +108,7 @@
                         type: 'DELETE',
                     }).done(function() {
                         console.log("remove complete: triggering playlistchanged");
-                        $.event.trigger('playlistchanged.playlist');
+                        $('.playlistchanged').trigger('playlistchanged');
                         $pl._mark_playing();
                     });
                     return false;

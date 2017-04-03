@@ -33,6 +33,8 @@ class HomeController < ApplicationController
 
   def home; end
 
+  def player; end
+
   def playlist
     respond_to do |format|
       format.html

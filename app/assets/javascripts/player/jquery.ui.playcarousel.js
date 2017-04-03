@@ -17,6 +17,7 @@
 	_create: function(){
             console.log("playcarousel:_create");
 	    // by default, not playing.
+            this.element.addClass('playlistchanged trackplayer nextplayer nextcontrol prevcontrol');
             $(this.element).carousel({
                 interval: false
             });
@@ -28,7 +29,7 @@
             console.log("carousel _next playing=" + playdata);
             $.cookie('playing', playdata, { expires: 7, path: '/' });
             var si = SoundInfo.sound_info_from_element(el);
-            $.event.trigger('trackcontrol',{ sound_info: si });
+            $('.trackcontrol').trigger('trackcontrol',{ sound_info: si });
         },
         _prev: function() {
             var el = this._prev_el();
@@ -36,7 +37,7 @@
             console.log("carousel _prev playing=" + playdata);
             $.cookie('playing', playdata, { expires: 7, path: '/' });
             var si = SoundInfo.sound_info_from_element(el);
-            $.event.trigger('trackcontrol',{ sound_info: si });
+            $('.trackcontrol').trigger('trackcontrol',{ sound_info: si });
         },
         _select: function(si) {
             var node_id = si.node_id.replace(/^[^-]+-/,'item-');
@@ -81,12 +82,14 @@
             this.element.on('slide',function() {
                 //console.log("carousel SLIDE");
             });
-            this.element.find('a.carousel-control.left').click(function() {
+            this.element.find('a.carousel-control.left').click(function(e) {
                 console.log("CAUGHT left");
+                e.preventDefault();
                 $pc._prev();
             });
-            this.element.find('a.carousel-control.right').click(function() {
+            this.element.find('a.carousel-control.right').click(function(e) {
                 console.log("CAUGHT right");
+                e.preventDefault();
                 $pc._next();
             });
                                                              
