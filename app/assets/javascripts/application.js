@@ -26,6 +26,5 @@
 //= require player/jquery.ui.playcarousel
 //= require player/jquery.ui.playbutton
 //= require appfixed/common/jquery.ui.eventposter
-//= require appfixed/common/util
 //= require appfixed/common/postmessage
 //= require_directory ./player

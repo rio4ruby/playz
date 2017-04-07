@@ -42,6 +42,7 @@
         },
         _mark_playing: function() {
             var playdata = $.cookie('playing');
+            console.log('PLAYLIST: _mark_playing playdata=' + playdata);
             if(playdata) {
                 var curalb = this.element.find('.playing').closest('.Album.listnode-content');
                 this.element.find('.playing').removeClass('playing');
@@ -170,6 +171,7 @@
                 console.log("playlist: caught playlistchanged");
             });
             this.element.on('trackplayer', function(event,ui) {
+                console.log('PLAYLIST: ON trackplayer');
                 var si = ui.sound_info;
                 if(si) {
                     node_id = si.node_id;
@@ -200,7 +202,7 @@
 	}
     });
     
-    $.extend($.ui.playlist, {
+    $.extend($.playz.playlist, {
 	instances: []
     });
     

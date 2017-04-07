@@ -69,7 +69,7 @@ class ListNodesController < ApplicationController
       @playdata = @nodetree.create_playdata(@nodetree.first_audio_file_node)
     end
 
-    cookies[:playing] = @playdata ? { value: @playdata, expires: Time.now + 3600 * 24 * 7 } : nil
+    cookies[:playing] = @playdata ? { value: @playdata, expires: 7.days.from_now } : nil
 
     respond_to do |format|
       format.html { render partial: 'list_nodes/playlist_playable_items', locals: { nodetree: @nodetree, node_id: @node_id, playing_playdata: @playdata } }

@@ -25,9 +25,7 @@ body{ padding-top: 60px; }
 @import "album";
 @import "artist";
 @import "audio_file";
-@import "./appfixed/appfixed/home";
-@import "./appfixed/common/playlist";
-@import "./appfixed/common/list_nodes";
-/* @import "mini"; */
+@import "list_nodes";
+@import "playlist";
 @import "carousel";
 @import "playslider";

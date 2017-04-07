@@ -14,7 +14,9 @@ $(document).ready(function() {
     $.ajax({
         url: '/player/simple'
     }).done( function(data, textStatus, jqXHR) {
-        $('#player').html(data);
+        $('#player-page').html(data);
+        init_nodeplayer();
+        init_playing();
         //$('#player-page').html('<h1>Player Page</h1>');
     });
 

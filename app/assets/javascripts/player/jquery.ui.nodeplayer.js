@@ -46,15 +46,6 @@
                 console.log("nodeplayer: caught trackcontrol");
                 $pl.track(ui);
             });
-            this.element.on('next',function(event) {
-                //$pl.next();
-            });
-            this.element.on('prev',function(event) {
-                //$pl.prev();
-            });
-            this.element.on('finished',function(event) {
-                //$pl.next();
-            });
             this.element.on('positioncontrol',function(event,ui) {
                 console.log('nodeplayer: positionchanged value=' + ui.value + " sound_id=" + $pl._sound_id)
                 var smsound = $pl._smsound();
@@ -62,7 +53,6 @@
             });
             this.element.on('volumecontrol',function(event,ui) {
                 var smsound = $pl._smsound();
-                //console.log('nodeplayer: volumechanged: ' + ui.value + " pl._volume=" + $pl._volume + " smsound.volume=" + smsound.volume)
                 $pl._volume = ui.value;
                 if( smsound  ) {
                     smsound.setVolume($pl._volume);
@@ -72,7 +62,6 @@
         },
         _playing_el: function() {
             var playing_el = $(this.element).find('.active').first();
-            // console.log("PLAYING_EL=" + playing_el.html());
             return playing_el;
         },
         _init_playing_el: function() {
@@ -98,12 +87,11 @@
             this._set_playing(this._playing_el(),doplay);
         },
         track: function(ui) {
-            console.log("nodeplayer#track this._sound_id=" + this._sound_id);
             var current_si = this._infos[this._sound_id];
             if( ui.sound_info ) {
                 console.log("    ui.sound_info.sound_id=" + ui.sound_info.sound_id);
                 if(current_si.node_id != ui.sound_info.node_id) {
-                    console.log("TRACK: _set_playing_si");
+                    console.log("TRACK: _set_playing_si(", ui.sound_info, ',', ui.doplay, ")");
                     this._set_playing_si(ui.sound_info,ui.doplay);
                 }
             }
@@ -119,7 +107,6 @@
                         this._set_playing_si(si);
                     }
                     var idx = this.element.find(sel).index();
-                    console.log("IDX=============" + idx);
                 }
                 
             }
@@ -128,10 +115,7 @@
             }
         },
         _set_playing: function(el,doplay) {
-            console.log("_set_playing el=" + o2s(el));
-
             var si = this._sound_info_from_element(el);
-            console.log("_set_playing url=" + si.url);
             this._set_playing_si(si,doplay);
         },
         _set_playing_si: function(si,doplay) {
@@ -141,12 +125,9 @@
             var was_playing = this.isPlaying();
             this.stop();
             this._sound_id = this._create_sound_from_si(si);
-            //             $('.player-position-slider').playslider("reset",si);
-            console.log("_SET_PLAYING_SI _SET_PLAYING_SI _SET_PLAYING_SI ");
+
             if( was_playing || doplay) {
-                console.log("WAS PLAYING OR DOPLAY");
                 this.element.one('playplayer',function() {
-                    console.log("CAUGHT playplayer");
                     $np._trigger_selected();
                 });
                 this.play();
@@ -158,37 +139,21 @@
         _keep_playing: false,
         _finish: function() {
             var $np = this;
-            //$pl._trigger('finish');
             this._keep_playing = true;
             if( this._next_sound_id ) {
                 this._sound_id = this._next_sound_id;
                 this._next_sound_id = null;
                 this.element.one('playplayer',function() {
-                    console.log("CAUGHT playplayer");
-                    $('.nextplayer').trigger('nextplayer.nodeplayer');
+                    console.log('NODEPLAYER: _finish ON playplayer');
+                    $('.nextplayer').trigger('nextplayer');
                     $np._trigger_selected();
                 });
                 this.play();
             }
-
-
-
-            // $.event.trigger('finishedplayer');
-            // if( this._next_sound_id ) {
-            //     var si = this._infos[this._next_sound_id];
-            //     if( si ) {
-            //         SoundInfo.sound_info_to_element(this.element,si);
-            //         bind_np_links();
-            //         this._set_playing_si(si,true);
-            //     }
-            // }
         },
         _trigger_selected: function() {
             var si = this._infos[this._sound_id];
-            //console.log("TRIGGER: TRACKPLAYER.NODEPLAYER si.sound_id=" + si.sound_id);
             if( si.sound_id ) {
-                //SoundInfo.store(si);
-                //this._trigger('trackselected',null,{sound_info: si});
                 $('.trackplayer').trigger('trackplayer',{ sound_info: si })
             }
         },
@@ -208,7 +173,6 @@
         },
         _load_next: function() {
             var nextel = this._playing_el().next();
-            //console.log("nextel classes=" + nextel.attr('class'));
             if( nextel && nextel.length > 0 ) {
                 var si = this._sound_info_from_element(nextel);
                 this._next_sound_id = this._create_sound_from_si(si);
@@ -216,24 +180,14 @@
         },
         _sound_info_from_element: function(el) {
             var sound_id = el.find('.sound_id-AudioFile').attr('data-sound_id');
-            //console.log("SOUND_ID=" + sound_id);
             if( ! this._infos[sound_id] ) {
                 this._infos[sound_id] = SoundInfo.sound_info_from_element(el);
             }
             return this._infos[sound_id];
         },
         track_select: function(ui) {
-            //console.log("TODO: track_select");
-            // if( !ui ) {
-            //     ui = {};
-            // }
-            // if( !ui.element ) {
-            //     ui.element = $(this.element).find('li.AudioFile').first();
-            // }
-            // this._set_playing(ui.element)
         },
         sendpos: function(pos) {
-            //console.log("trigger positionplayer: ", pos);
             $('.positionplayer').trigger('positionplayer',{ value: pos });
         },
         stop: function() {
@@ -249,59 +203,49 @@
         play: function() {
             var $pl = this;
             var smsound = this._smsound();
-            // var sliderpos = $('.player-position-slider').playslider("value");
-            console.log("PLAY PLAY PLAY PLAY:" + smsound.sID);
+
             if( smsound.readyState !== 2 ) {
                 if( smsound.playState !== 1 ) {
                     smsound.play({
-                        // position: sliderpos,
                         position: 0,
 		        onerror: function() {
                             console.log('+++++++ onerror: ' + smsound.sID);
 		        },
 		        onplay: function() {
-                            //console.log("nodeplayer onplay trigger onplayplayer");
+                            console.log('NODEPLAYER: smsound.onplay');
                             this.setVolume($pl._volume);
-                            //$.event.trigger('onplayplayer');
                             $('.playplayer').trigger( 'playplayer' );
                             $pl.sendpos(smsound.position);
 		        },
 		        onfinish: function() {
+                            console.log('NODEPLAYER: smsound.onfinish');
                             this.setVolume($pl._volume);
                             $pl._finish();
 		        },
 		        onload: function(success) {
-                            console.log("ONLOAD ONLOAD");
-                            //console.log("nodeplayer onload: sound_id=" + $pl._sound_id);
-                            //console.log("nodeplayer duration: " + smsound.duration);
+                            console.log('NODEPLAYER: smsound.onload');
                             $('.durationplayer').trigger('durationplayer',{ max: smsound.duration });
                             this.onPosition(smsound.duration - 10000, function() {
-                                //console.log('the sound ' + this.sID + ' is now at position ' + this.position);
                                 $pl._load_next();
                             });
-                            //$.event.trigger('onloadplayer');
 		        },
 		        whileloading: function() {
-                            // console.log("nodeplayer duration: " + smsound.durationEstimate);
                             $('.durationplayer').trigger('durationplayer',{ max: smsound.durationEstimate });
 		        },
 		        whileplaying: function() {
                             $pl._secs = Math.floor(smsound.position/10000);
                             if( $pl._secs != $pl._priorsecs ) {
-                                //console.log("secs=" + $pl._secs);
                                 $pl._priorsecs = $pl._secs;
                                 $pl.sendpos(smsound.position);
                             }
 		        }
                     });
-                    console.log("nodeplayer.play 1: paused=" + smsound.paused);
                     if( smsound.paused ) {
                         $('.pauseplayer').trigger('pauseplayer');
                     }
                 }
                 else {
                     smsound.togglePause();
-                    console.log("nodeplayer.play 2: paused=" + smsound.paused);
                     if( smsound.paused ) {
                         $('.pauseplayer').trigger('pauseplayer');
                     }
@@ -323,7 +267,6 @@
                 else if ( !this._mute && smsound.muted) {
                     soundManager.unmute();
                 }
-                //console.log("mute: muted=" + smsound.muted);
                 if( smsound.muted ) {
                     $('.muteplayer').trigger('muteplayer');
                 }
