@@ -1,0 +1,14 @@
+- list_node = nodetree.list_node(node_id)
+- content_for :controls do
+  = render :partial => "#{list_node.listable_type.tableize}/controls", :locals => {:list_node => list_node}
+
+- content_for :elem do
+  = render :partial => "#{list_node.listable_type.tableize}/elem", :object => nodetree.create_struct(node_id)
+
+- content_for :child_nodes do
+  - children = nodetree.children(node_id)
+  - unless children.empty?
+    - artist_count_class = nodetree.n_child_artists(node_id) == 1 ? 'single-artist' : ''
+    .listnode-content{ :class => "#{list_node.listable_type} depth#{list_node.ancestry_depth} #{artist_count_class}" }
+      - children.each do |nid|
+        = render :partial => 'list_nodes/node', :locals => { :nodetree => nodetree, :node_id => nid }

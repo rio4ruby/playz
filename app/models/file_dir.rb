@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 class FileDir < ApplicationRecord
+  has_ancestry
   has_many :audio_files, dependent: :destroy
   has_many :image_files, dependent: :destroy
   has_many :artists, through: :audio_files
@@ -15,8 +16,8 @@ class FileDir < ApplicationRecord
   private
 
   def ensure_parent
-    fd = rio(name)
-    return if fd == RIO.root || parent
+    fd = Pathname.new(name)
+    return if fd.root? || parent
     self.parent = FileDir.where(name: fd.dirname.to_s).first_or_create
   end
 end

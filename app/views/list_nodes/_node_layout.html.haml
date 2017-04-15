@@ -1,0 +1,16 @@
+- list_node = nodetree.list_node(node_id)
+- children = nodetree.children(node_id)
+- playdata_class = list_node_playdata_class(list_node)
+- playdata_data = list_node_playdata_data(list_node)
+.listnode-elem{ :id => "pl-list_node-#{list_node.id}", :class => "#{list_node.listable_type} depth#{list_node.ancestry_depth} #{playdata_class}", 'data-playdata' => "#{playdata_data}" }
+
+  .listnode-header{ :class => "#{list_node.listable_type} depth#{list_node.ancestry_depth}" }
+    = yield :controls
+    .listnode-dbg
+      = "#{list_node.ancestry_depth}-#{list_node.position}"
+    = yield :elem
+  - unless children.empty?
+    - artist_count_class = nodetree.n_child_artists(node_id) == 1 ? 'single-artist' : ''
+    .listnode-content{ :class => "#{list_node.listable_type} depth#{list_node.ancestry_depth} #{artist_count_class}" }
+      - children.each do |nid|
+        = render :partial => 'list_nodes/node', :locals => { :nodetree => nodetree, :node_id => nid }

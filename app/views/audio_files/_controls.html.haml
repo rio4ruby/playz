@@ -1,3 +1,3 @@
 .listnode-controls
   .listnode-ctl
-    = link_to '<i class="icon-remove"></i>'.html_safe,list_nodes_path(list_node.id), :method => :delete, :title => "Remove From Playlist", :remote => true, :class => "remove-node"
+    = link_to '<i class="material-icons md-18">delete</i>'.html_safe,list_node_path(list_node.id), :method => :delete, :title => "Remove Song From Playlist", :remote => true, :class => "remove-node"

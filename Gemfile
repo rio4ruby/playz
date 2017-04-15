@@ -71,6 +71,7 @@ group :development, :test do
 
   # Use RSpec
   gem 'database_cleaner'
+  gem 'factory_girl_rails'
   gem 'rspec-rails'
 end
 

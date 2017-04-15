@@ -10,10 +10,10 @@
 
 
 $(document).ready(function() {
-    console.log($.querystring.q);
-    $('#search-form').on('show', function() {
-        $('#search-form').html('<h3>Search Form Show</h3>');
-    });
+    // console.log($.querystring.q);
+    // $('#search-form').on('show', function() {
+    //     $('#search-form').html('<h3>Search Form Show</h3>');
+    // });
     //show_search_results($.querystring.q);
     //init_query_click();
     //init_watchfield();

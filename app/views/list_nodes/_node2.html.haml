@@ -1,0 +1,74 @@
+- list_node = nodetree.list_node(node_id)
+- children = nodetree.children(node_id)
+- playdata_class = list_node_playdata_class(list_node)
+- playdata_data = list_node_playdata_data(list_node)
+.listnode-elem{ :id => "pl-list_node-#{list_node.id}", :class => "#{list_node.listable_type} depth#{list_node.ancestry_depth} #{playdata_class}", 'data-playdata' => "#{playdata_data}" }
+
+  .listnode-header{ :class => "#{list_node.listable_type} depth#{list_node.ancestry_depth}" }
+    .listnode-controls
+      .listnode-ctl
+        = link_to '<i class="icon-trash"></i>'.html_safe,list_nodes_clear_path(:id => list_node.id), :method => :get, :title => "Clear playlist contents"
+    %h2=list_node.listable.name
+
+  - unless children.empty?
+    .listnode-content{ :class => "#{list_node.listable_type} depth#{list_node.ancestry_depth}" }
+      - children.each do |node_id2|
+
+        - list_node2 = nodetree.list_node(node_id2)
+        - children2 = nodetree.children(node_id2)
+        - playdata_class2 = list_node_playdata_class(list_node2)
+        - playdata_data2 = list_node_playdata_data(list_node2)
+        .listnode-elem{ :id => "pl-list_node-#{list_node2.id}", :class => "#{list_node2.listable_type} depth#{list_node2.ancestry_depth} #{playdata_class2}", 'data-playdata' => "#{playdata_data2}" }
+
+          .listnode-header{ :class => "#{list_node2.listable_type} depth#{list_node2.ancestry_depth}" }
+            .listnode-controls
+              .listnode-ctl=link_to '<i class="icon-remove"></i>'.html_safe,list_node_path(list_node2.id), :method => :delete, :title => "Remove From Playlist", :remote => true, :class => "remove-node"
+              - if list_node2.listable_type == 'Album'
+                .listnode-ctl=link_to '<i class="icon-list-alt"></i>'.html_safe,list_nodes_flatten_path(:id => list_node2.id), :method => :get, :title => "Move Album tracks to playlist", :remote => true, :class => "flatten-node"
+
+            - elem = nodetree.create_struct(node_id2)
+            - if list_node2.listable_type == 'AudioFile'
+              .elem{ 'data-elem_id' => "audio_file-#{elem.id}" } 
+                -# .elem-image=image_tag("note-blue-32.png")
+                .elem-data{ "data-sound_id" => "sound_id-audio_file-#{elem.id}", :class => "sound_id-AudioFile"}
+                  .duration= Time.at(elem.length).strftime("%M:%S").sub(/^0/,'')
+                  .tracknum= elem.tracknum
+                  .song= elem.song_name
+                  .artist= elem.artist_name
+                  .album= elem.album_name
+                  .url= link_to "#{elem.song_name} - #{elem.artist_name}",elem.url,:remote => true, :class => 'audiofile-link'
+            - elsif list_node2.listable_type == 'Album'
+              .elem{ 'data-elem_id' => "album-#{elem.id}" } 
+                .elem-image=%{<img src="#{image_album_path(elem.id)}" border="0" />}.html_safe
+                .elem-data
+                  .name=elem.name
+                .elem-content
+                  .artists
+                    - artists = elem.artists.uniq
+                    = artists.first(3).map{|a| a.name }.join(", ").html_safe
+                    = (artists.size > 3 ? " &hellip;".html_safe : "")
+  
+          - unless children2.empty?
+            - artist_count_class = nodetree.n_child_artists(node_id2) == 1 ? 'single-artist' : 'multi-artist'
+            .listnode-content{ :class => "#{list_node2.listable_type} depth#{list_node2.ancestry_depth} #{artist_count_class}" }
+              - children2.each do |node_id3|
+                - list_node3 = nodetree.list_node(node_id3)
+                - playdata_class3 = list_node_playdata_class(list_node3)
+                - playdata_data3 = list_node_playdata_data(list_node3)
+                .listnode-elem{ :id => "pl-list_node-#{list_node3.id}", :class => "#{list_node3.listable_type} depth#{list_node3.ancestry_depth} #{playdata_class3}", 'data-playdata' => "#{playdata_data3}" }
+                  .listnode-header{ :class => "#{list_node3.listable_type} depth#{list_node3.ancestry_depth}" }
+                    .listnode-controls
+                      .listnode-ctl=link_to '<i class="icon-remove"></i>'.html_safe,list_node_path(list_node3.id), :method => :delete, :title => "Remove From Playlist", :remote => true, :class => "remove-node"
+                    - elem3 = nodetree.create_struct(node_id3)
+                    .elem{ 'data-elem_id' => "audio_file-#{elem3.id}" } 
+                      -# .elem-image=image_tag("note-blue-32.png")
+                      .elem-data{ "data-sound_id" => "sound_id-audio_file-#{elem3.id}", :class => "sound_id-AudioFile"}
+                        .duration= Time.at(elem3.length).strftime("%M:%S").sub(/^0/,'')
+                        .tracknum= elem3.tracknum
+                        .song= elem3.song_name
+                        .artist= elem3.artist_name
+                        .album= elem3.album_name
+                        .url= link_to "#{elem3.song_name} - #{elem3.artist_name}",elem3.url,:remote => true, :class => 'audiofile-link'
+                            
+
+                  

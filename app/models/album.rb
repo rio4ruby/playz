@@ -24,10 +24,6 @@ class Album < ApplicationRecord
     text :name_textp, stored: true, boost: 0.5, as: :name_textp do
       name
     end
-
-    text :album_names, boost: 0.2 do
-      albums.map(&:name).join(' ')
-    end
   end
 
   def album_artist_name

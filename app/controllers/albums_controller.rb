@@ -55,7 +55,7 @@ class AlbumsController < ApplicationController
 
     list_node = current_user.list_heads.playing.first.list_node
     artists = @artist_id ? [Artist.find(@artist_id.to_i)] : []
-    new_node = Album.find(@id).create_list_node_all(list_node,artists)
+    new_node = Album.find(@id).create_list_node_all(list_node, artists)
 
     @node_id = new_node.id
     subtree = ListNode.includes(:listable).ordered.subtree_of(@node_id).all
@@ -65,6 +65,4 @@ class AlbumsController < ApplicationController
       format.js
     end
   end
-
-
 end

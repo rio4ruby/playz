@@ -29,6 +29,7 @@ Metrics/BlockLength:
     - 'Rakefile'
     - '**/*.rake'
     - 'spec/**/*.rb'
+    - 'config/routes.rb'
 
 Metrics/LineLength:
   Max: 160
@@ -38,4 +39,8 @@ Metrics/AbcSize:
 
 Metrics/MethodLength:
   Max: 30
+
+Metrics/ClassLength:
+  Max: 200
+
   

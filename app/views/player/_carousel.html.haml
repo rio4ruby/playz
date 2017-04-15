@@ -1,0 +1,17 @@
+#myCarousel.carousel.slide
+
+  / Carousel items
+  .carousel-inner.playlist-items{ role: 'listbox' }
+    = render :partial => "list_nodes/playlist_playable_items", :locals => { :nodetree => nodetree, :node_id => node_id, :playing_playdata => playing_playdata }
+
+  .car-overlay
+    %a.playbutton{:href => '#pb-container' }
+      %i.material-icons play_arrow
+    
+  / Carousel nav
+  %a.carousel-control.left{ :href => "#myCarousel"}
+    &lsaquo;
+  %a.carousel-control.right{ :href => "#myCarousel"}
+    &rsaquo;
+
+

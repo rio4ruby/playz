@@ -1,0 +1,12 @@
+.listnode-elem{ :id => "pl-list_node-#{list_node.id}",:class => "#{list_node.listable_type} depth#{list_node.ancestry_depth}" }
+
+  .listnode-header{ :class => "#{list_node.listable_type} depth#{list_node.ancestry_depth}" }
+    .listnode-controls
+      .listnode-ctl
+        = link_to image_tag("icons/png/16x16/actions/edit-delete-6.png", :border => 0),list_node_path(list_node.id), :method => :delete, :title => "Remove From Playlist"
+    .listnode-dbg
+      = "#{list_node.ancestry_depth}-#{list_node.position}"
+    = render :partial => "#{list_node.listable_type.tableize}/elem", :object => list_node.listable
+  - unless list_node.children.empty?
+    .listnode-content{ :class => "#{list_node.listable_type} depth#{list_node.ancestry_depth} #{list_node.listable.node_class(list_node)}" }
+      = render list_node.children.ordered
