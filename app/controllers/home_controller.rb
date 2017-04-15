@@ -55,6 +55,7 @@ class HomeController < ApplicationController
 
   def search_results
     Rails.logger.info("Search Results: #{params}")
+    Rails.logger.info(Rails.configuration.inspect)
     search_service = SearchService.new(params)
     @search = search_service.search(Artist, Album, AudioFile)
     @q = search_service.opts[:q] || ''

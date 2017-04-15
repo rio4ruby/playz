@@ -18,9 +18,6 @@ Style/Encoding:
 Style/FrozenStringLiteralComment:
   EnforcedStyle: always
 
-Style/IndentHeredoc:
-  EnforcedStyle: powerpack
-
 Style/Documentation:
   Enabled: false
   
