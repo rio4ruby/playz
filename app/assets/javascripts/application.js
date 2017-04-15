@@ -26,5 +26,3 @@
 //= require jquery.ui.eventposter
 //= require postmessage
 //= require_directory ./player
-//= require player/jquery.ui.playcarousel
-//= require player/jquery.ui.playbutton
