@@ -19,14 +19,13 @@ body{ padding-top: 60px; }
 @import "jquery-ui/slider";
 @import "jquery-ui/draggable";
 
-@import "pages";
-@import "hits";
-@import "home";
 @import "album";
 @import "artist";
 @import "audio_file";
-@import "list_nodes";
-@import "playlist";
 @import "carousel";
-@import "playslider";
+@import "hits";
+@import "home";
+@import "list_nodes";
 @import "player";
+@import "playlist";
+@import "playslider";

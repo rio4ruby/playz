@@ -8,8 +8,6 @@ class AlbumsController < ApplicationController
     if artist
       album_name = album.name
       artist_name = artist.name
-      # altdir = "/srv/data/lastfm/album/#{URI.encode(artist_name)}/#{URI.encode(album_name)}/cover"
-      # altdir = "/mnt/files/lastfm/album/#{URI.encode(artist_name)}/#{URI.encode(album_name)}/cover"
       altdir = "/srv/data/lastfm2/album/#{artist_name}/#{album_name}/cover"
       imgfilebase = altdir + '/' + size + '.'
       %w(jpg png).each do |ext|
@@ -41,10 +39,7 @@ class AlbumsController < ApplicationController
     response.headers['Content-Type'] = mime_type
     response.headers['Content-Disposition'] = 'inline'
     content = open(filepath, 'rb').read
-    # response.headers['Content-Length'] = %{"#{content.size}"}
     response.headers['Content-Length'] = content.size.to_s
-    #   response.headers['Content-Type'] = @file.content_type
-    #   response.headers['Content-Disposition'] = "attachment; size=\"#{@file.file_size}\"; filename=\"#{@file.original_filename}\""
 
     render plain: content
   end
