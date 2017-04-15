@@ -115,7 +115,7 @@
             var data = { active_id: active_id};
             this.element.find('.playlist-items').load(url,data,function() {
                 var items = $(this).find('.carousel-item');
-                $('#status').html("playlistchange: playlist now has " + items.length + " items.");
+                $('#status').html("Playlist now has " + items.length + " items.");
             });
         },
         

@@ -22,9 +22,9 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_directory .
-//= require appfixed/common/jquery.cookie
+//= require jquery.cookie
+//= require jquery.ui.eventposter
+//= require postmessage
+//= require_directory ./player
 //= require player/jquery.ui.playcarousel
 //= require player/jquery.ui.playbutton
-//= require appfixed/common/jquery.ui.eventposter
-//= require appfixed/common/postmessage
-//= require_directory ./player

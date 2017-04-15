@@ -1,3 +1,6 @@
 .container
   #search-results
+    %h4 Search Results
+    = paginate @search.hits
     = render :partial => 'home/search_results', :locals => { :q => @q, :search => @search }
+    = paginate @search.hits

@@ -14,7 +14,7 @@ $(document).ready(function() {
     $.ajax({
         url: '/player/simple'
     }).done( function(data, textStatus, jqXHR) {
-        $('#player-page').html(data);
+        $('#player-page').replaceWith(data);
         init_nodeplayer();
         init_playing();
         //$('#player-page').html('<h1>Player Page</h1>');
@@ -40,7 +40,7 @@ $(document).ready(function() {
     $.ajax({
         url: '/home/playlist'
     }).done( function(data, textStatus, jqXHR) {
-        $('#playlist-page').html(data);
+        $('#playlist-page').replaceWith(data);
         load_playlist();
     });
 });
