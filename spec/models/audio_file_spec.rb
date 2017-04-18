@@ -34,5 +34,35 @@ RSpec.describe AudioFile, type: :model do
         expect(song.audio_files.map(&:artist)).to include artist
       end
     end
+    context 'name' do
+      it 'returns song.name' do
+        expect(audio_file.name).to eq song.name
+      end
+    end
+    context 'artist_name' do
+      it 'returns artist.name' do
+        expect(audio_file.artist_name).to eq artist.name
+      end
+    end
+    context 'album_name' do
+      it 'returns album.name' do
+        expect(audio_file.album_name).to eq album.name
+      end
+    end
+    context 'song_name' do
+      it 'returns song.name' do
+        expect(audio_file.song_name).to eq song.name
+      end
+    end
+    context 'file_dir_name' do
+      it 'returns file_dir.name' do
+        expect(audio_file.file_dir_name).to eq file_dir.name
+      end
+    end
+    context 'filepath' do
+      it 'returns dirname/filename' do
+        expect(audio_file.filepath).to eq "#{audio_file.file_dir.name}/#{audio_file.filename}"
+      end
+    end
   end
 end

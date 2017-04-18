@@ -36,14 +36,12 @@ class Album < ApplicationRecord
   end
 
   def create_list_node(parent)
-    new_node = parent.children.create(listable: self)
-    new_node
+    parent.children.create(listable: self)
   end
 
   def create_list_node_children(parent, filter_recs = [])
     audio_files.limit_to(*filter_recs).order('tracknum').each do |af|
       af.create_list_node(parent)
-      p "CREATE_LIST_NODE for #{af} in parent=#{parent.id}"
     end
     parent
   end

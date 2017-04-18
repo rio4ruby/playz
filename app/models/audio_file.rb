@@ -78,10 +78,6 @@ class AudioFile < ApplicationRecord
     song.name if song
   end
 
-  def genre_name
-    genre.name if genre
-  end
-
   def file_dir_name
     file_dir.name if file_dir
   end

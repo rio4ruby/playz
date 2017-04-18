@@ -5,5 +5,8 @@ FactoryGirl.define do
     file_modified_time { DateTime.now }
     mime_type 'fake/mime'
     song
+    file_dir
+    artist
+    album
   end
 end

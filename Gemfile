@@ -79,6 +79,7 @@ group :test do
   # Use RSpec
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'simplecov', require: false
 end
 
 group :development do

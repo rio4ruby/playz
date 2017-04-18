@@ -11,7 +11,6 @@ class ListNodesController < ApplicationController
 
     item = ListNode.find(item_id)
     item.move_to(list_id, position)
-
     respond_to do |format|
       format.json { head :no_content }
     end
