@@ -34,5 +34,4 @@ class HomeController < ApplicationController
     @search = search_service.search(Artist, Album, AudioFile)
     @q = search_service.opts[:q] || ''
   end
-
 end

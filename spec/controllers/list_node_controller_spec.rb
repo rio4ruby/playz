@@ -13,8 +13,7 @@ RSpec.describe ListNodesController, type: :controller do
     let!(:node3) { node_head.children.create(listable: audio_file1, position: 3) }
     let!(:node4) { node_head.children.create(listable: audio_file1, position: 4) }
     let!(:node5) { node_head.children.create(listable: audio_file1, position: 5) }
-      
- 
+
     describe 'setup' do
       it 'is positioned' do
         puts "#{node1.reload.position},#{node2.reload.position},#{node3.reload.position},#{node4.reload.position},#{node5.reload.position}"
@@ -25,7 +24,7 @@ RSpec.describe ListNodesController, type: :controller do
     end
 
     describe 'flatten' do
-      let(:flatten_params) { { id: node2.id }  }
+      let(:flatten_params) { { id: node2.id } }
       before { get :flatten, params: flatten_params, xhr: true }
 
       it 'returns http success' do
@@ -37,7 +36,7 @@ RSpec.describe ListNodesController, type: :controller do
         {
           item: "pl-#{node1.id}",
           list: "pl-#{node_head.id}",
-          index: "4"
+          index: '4'
         }
       end
       before { get :move_to, params: move_to_params, xhr: true }
@@ -57,7 +56,7 @@ RSpec.describe ListNodesController, type: :controller do
     end
     # let(:album) { FactoryGirl.create(:album, :with_same_artist_audio_files) }
   end
-  
+
   # describe 'setup' do
   #   let(:album) { FactoryGirl.create(:album, :with_audio_files, audio_files_count: 3) }
 
@@ -69,7 +68,7 @@ RSpec.describe ListNodesController, type: :controller do
   #     expect(album.album_artist).to_not be_nil
   #     expect(album.album_artist).to be_kind_of(Artist)
   #     expect(Artist.all.count).to eq 4
-      
+
   #   end
   # end
 
@@ -84,16 +83,15 @@ RSpec.describe ListNodesController, type: :controller do
   #     expect(album.album_artist).to_not be_nil
   #     expect(album.album_artist).to be_kind_of(Artist)
   #     expect(Artist.all.count).to eq 1
-      
+
   #   end
   # end
 
-  
   # describe 'GET #add', :js do
   #   let(:album) { FactoryGirl.create(:album, :with_same_artist_audio_files) }
   #   let(:add_params) { { album_id: album.id, artist_id: album.album_artist.id } }
   #   before { get :add, params: add_params, xhr: true }
-    
+
   #   it 'returns http success' do
   #     expect(response).to have_http_status(:success)
   #   end

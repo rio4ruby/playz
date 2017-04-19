@@ -6,4 +6,4 @@
       .image.float-left
         = link_to %{<img src="#{albumart_url(album,'small')}" border="0" />}.html_safe, artist_album_add_path(elem.id,album.id), :remote => true, :title => "Add '#{album.name}' to Playing"
       .name
-        = link_to album.name, album_path(album.id), :class => 'link-name'
+        = link_to album.name, search_query(album.name), :class => 'link-name query-link'

@@ -3,11 +3,13 @@
 .desc
   .row.name
     .col-sm-12
-      %strong= elem.name
+      %strong
+        = link_to elem.name, search_query(elem.name), :class => 'query-link'
   .row.artist
     .col-sm-12
       %em
         - artists = elem.artists.uniq
-        = artists.first(3).map(&:name).join(" &#x25c6; ").html_safe
+        - artist_links = artists.first(3).map{|a| link_to a.name, search_query(a.name), class: 'query-link'}
+        = artist_links.join(" &#x25c6; ").html_safe
         = (artists.size > 3 ? " &hellip;".html_safe : "")
   

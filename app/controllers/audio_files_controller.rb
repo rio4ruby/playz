@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 class AudioFilesController < ApplicationController
   layout proc { |controller| controller.request.xhr? ? false : 'application' }
-  respond_to :js
 
   def add
     @id = params[:id]
@@ -10,6 +9,8 @@ class AudioFilesController < ApplicationController
     @node_id = new_node.id
     subtree = ListNode.includes(:listable).ordered.subtree_of(@node_id).all
     @nodetree = NodeTree.new(subtree)
-    render js: 'add'
+    respond_to do |format|
+      format.js
+    end
   end
 end

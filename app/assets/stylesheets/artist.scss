@@ -15,6 +15,13 @@
         }
     }
     .elem-body {
+        a {
+            color: #777;
+            &:hover {
+                color: black;
+                //text-decoration: none;
+            }
+        }
         .name {
             height: 40px;
             font-size: 14px;
@@ -31,6 +38,13 @@
         }
     }
     .elem-head {
+        a {
+            color: #333;
+            &:hover {
+                color: black;
+                // text-decoration: none;
+            }
+        }
         .name {
             height: 36px;
             font-style: oblique;

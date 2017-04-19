@@ -66,7 +66,6 @@ class ListNodesController < ApplicationController
     @nodetree = NodeTree.new(subtree)
   end
 
-
   # DELETE /list_nodes/1
   # DELETE /list_nodes/1.json
   def destroy

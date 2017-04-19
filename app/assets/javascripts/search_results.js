@@ -14,6 +14,7 @@ function show_search_results(parms) {
         console.log("search status=" + textStatus + " url=" + url);
         $('#search-results').html(data);
         init_page_clicks();
+        init_query_links();
         // bind_content_click();
         // init_sr_hover();
         // init_sr_links();
@@ -33,6 +34,16 @@ function init_query_click() {
         var params = get_params();
         show_search_results(params);
         update_location(params);
+    });
+}
+
+function init_query_links() {
+    $('.query-link').on('click', function(e) {
+        e.preventDefault();
+        var queryobj = queryobject($(this).attr('href'));
+        $('#search-form input').val(queryobj.q);
+        show_search_results(queryobj);
+        update_location(queryobj);
     });
 }
 

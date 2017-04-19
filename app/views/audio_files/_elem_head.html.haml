@@ -6,11 +6,11 @@
   .tracknum
     = elem.tracknum
   .song
-    = elem.song_name
+    = link_to elem.song_name, search_query(elem.song_name), :class => 'query-link'
   .artist.float-left
-    = elem.artist_name
+    = link_to elem.artist_name, search_query(elem.artist_name), :class => 'query-link'
   .album.float-right
-    = elem.album_name
+    = link_to elem.album_name, search_query(elem.album_name), :class => 'query-link'
   .url
     = link_to "#{elem.song_name} - #{elem.artist_name}",elem.url,:remote => true, :class => 'audiofile-link'
   

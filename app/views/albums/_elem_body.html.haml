@@ -3,6 +3,7 @@
     - if elem.audio_files
       .audio_files
         - audio_files = elem.audio_files.uniq
-        = audio_files.first(8).map{|a| a.name }.join("&nbsp;&nbsp;&#x2b26;&nbsp;&nbsp;").html_safe
-        = (audio_files.size > 8 ? " &hellip;".html_safe : "")
+        - af_links = audio_files.first(12).map{|a| link_to a.name, search_query(a.name), class: 'query-link'}
+        = af_links.join("&nbsp;&nbsp;&#x2b26;&nbsp;&nbsp;").html_safe
+        = (audio_files.size > 12 ? " &hellip;".html_safe : "")
 

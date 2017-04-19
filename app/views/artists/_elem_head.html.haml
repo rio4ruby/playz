@@ -1,5 +1,5 @@
 .name
-  = link_to elem.name, artist_path(elem.id), :class => 'link-name'
+  = link_to elem.name, search_query(elem.name), :class => 'link-name query-link'
   %span.subname
     = '( ' + pluralize(elem.audio_files.uniq.count,'track') + ' )'
   &nbsp;

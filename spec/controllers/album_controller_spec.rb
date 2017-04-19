@@ -21,7 +21,6 @@ RSpec.describe AlbumsController, type: :controller do
       expect(album.album_artist).to_not be_nil
       expect(album.album_artist).to be_kind_of(Artist)
       expect(Artist.all.count).to eq 4
-      
     end
   end
 
@@ -36,16 +35,14 @@ RSpec.describe AlbumsController, type: :controller do
       expect(album.album_artist).to_not be_nil
       expect(album.album_artist).to be_kind_of(Artist)
       expect(Artist.all.count).to eq 1
-      
     end
   end
 
-  
   describe 'GET #add', :js do
     let(:album) { FactoryGirl.create(:album, :with_same_artist_audio_files) }
     let(:add_params) { { album_id: album.id, artist_id: album.album_artist.id } }
     before { get :add, params: add_params, xhr: true }
-    
+
     it 'returns http success' do
       expect(response).to have_http_status(:success)
     end

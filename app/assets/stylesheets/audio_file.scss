@@ -6,6 +6,13 @@
         border-radius: 10px;
     }
     .elem-head {
+        a {
+            color: #888;
+            &:hover {
+                color: black;
+                text-decoration: none;
+            }
+        }
         .detail-button {
             height: 30px;
             line-height: 30px;

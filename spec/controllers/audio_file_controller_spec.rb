@@ -9,11 +9,11 @@ RSpec.describe AudioFilesController, type: :controller do
       expect(ListHead.where(name: 'Playing')).to_not be_blank
     end
   end
-  
+
   describe 'GET #add', :js do
     let(:audio_file) { FactoryGirl.create(:audio_file) }
     before { get :add, params: { id: audio_file.id }, xhr: true }
-    
+
     it 'returns http success' do
       expect(response).to have_http_status(:success)
     end
