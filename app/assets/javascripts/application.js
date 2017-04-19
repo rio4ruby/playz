@@ -19,7 +19,7 @@
 //= require jquery-ui/widgets/draggable
 //= require jquery-ui/widgets/slider
 //= require tether
-//= require turbolinks
+//= # require turbolinks
 //= require bootstrap-sprockets
 //= require_directory .
 //= require jquery.cookie

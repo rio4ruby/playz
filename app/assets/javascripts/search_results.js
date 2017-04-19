@@ -24,7 +24,25 @@ function show_search_results(parms) {
 
 function update_location(params) {
     console.log(params,$.param(params));
-    history.replaceState(params , null, '?' + $.param(params));
+    history.pushState(params , null, '?' + $.param(params));
+    init_popstate();
+}
+function init_popstate() {
+    $(window).on('popstate', function(e) {
+        e.preventDefault();
+        console.log('popstate');
+        var state = e.originalEvent.state;
+        console.log(state);
+        console.log($.querystring);
+        if( !state.q ) {
+            state.q = $.querystring.q;
+        }
+        $('#search-form input').val(state.q);
+        show_search_results(state);
+        //var url = '/home?';
+        //alert(e.data);
+
+    });
 }
 
 function init_query_click() {
@@ -60,16 +78,6 @@ function init_page_clicks() {
     });
 }
 
-function init_popstate() {
-    $(window).on('popstate', function(e) {
-        console.log('popstate');
-        //var state = e.originalEvent.state;
-        //console.log(state);
-        //var url = '/home?';
-        //alert(e.data);
-
-    });
-}
 
 function init_watchfield() {
     console.log("calling watchfield");
