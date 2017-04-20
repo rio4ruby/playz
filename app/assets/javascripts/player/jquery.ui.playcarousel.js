@@ -113,7 +113,8 @@
             console.log("PLAYLIST CHANGED: active_id=" + active_id);
             var url = '/list_nodes/playlist_playable_items';
             var data = { active_id: active_id};
-            this.element.find('.playlist-items').load(url,data,function() {
+            this.element.find('.playlist-items').load(url,data,function(text,status) {
+                console.log('PLAYLIST: ',text);
                 var items = $(this).find('.carousel-item');
                 $('#status').html("Playlist now has " + items.length + " items.");
             });

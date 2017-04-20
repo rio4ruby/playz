@@ -73,8 +73,16 @@
                 list: ui.item.parent().closest('.listnode-elem').attr('id'),
                 index: ui.item.index()
             };
-            $.getJSON("/list_nodes/move_to",data);
-            $('.playlistchanged').trigger('playlistchanged');
+            console.log(ui.item.parent().closest('.listnode-elem').attr('id'));
+            ui.item.parent().children().each(function(i,item) {
+                console.log(i,item);
+                $(item).find('.listnode-content').children().each(function(j,itm) {
+                    console.log("   ",j,itm);
+                });
+            });
+            $.getJSON("/list_nodes/move_to",data).done(function() {
+                $('.playlistchanged').trigger('playlistchanged');
+            });
         },
         _bind_header_click: function() {
             this.element.find('.listnode-header.ListHead,.listnode-header.Album')
