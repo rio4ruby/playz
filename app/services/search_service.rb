@@ -4,8 +4,8 @@ class SearchService
 
   attr_reader :opts
   def initialize(params = {})
-    # @opts = DEFAULT_OPTS.merge(params)
     @opts = params
+    @opts[:per] ||= DEFAULT_OPTS[:per]
   end
 
   def self.search(opts = {}, *models)

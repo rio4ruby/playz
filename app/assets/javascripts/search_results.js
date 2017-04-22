@@ -49,7 +49,8 @@ function init_query_click() {
     $('#search-form button').on('click', function(e) {
         e.preventDefault();
         var query = $('#search-form input').val();
-        var params = get_params();
+        var params = { q: query };
+        console.log('init_query_click', params);
         show_search_results(params);
         update_location(params);
     });
@@ -66,13 +67,14 @@ function init_query_links() {
 }
 
 function init_page_clicks() {
-    $('#search-results .pagination .page-link').on('click', function(e) {
+    $('#search-results .nav-link').on('click', function(e) {
         e.preventDefault();
         var url = $(this).attr('href');
-        console.log("CLICK .page-link" + " url=" + url, $.querystring);
+        console.log("CLICK .nav-link" + " url=" + url, $.querystring);
         $('#search-results').load(url,function(data,textStatus) {
             console.log("search status=" + textStatus + " url=" + url, queryobject(url));
             init_page_clicks();
+            init_query_links();
             update_location(queryobject(url));
         });
     });
