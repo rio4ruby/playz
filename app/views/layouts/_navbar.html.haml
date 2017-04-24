@@ -15,3 +15,7 @@
         %a.nav-link#nav-link-playlist{:href => "/home/playlist"} Playlist
       %li.nav-item
         %a.nav-link.disabled{:href => "#"} Disabled
+    %form#search-form.form-search.form-inline
+      %input#q.form-control.search-query{ type: "search",  placeholder: "Search" }
+        %button#search-button.btn.btn-link{ type: "submit" }
+          %i.material-icons search

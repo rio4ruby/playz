@@ -8,17 +8,16 @@
 -#   .f_circleG#frotateG_07
 -#   .f_circleG#frotateG_08
 
-#search-results
-  .row
-    .col-sm-12
-      %ul.nav.nav-fill
-        %li.nav-item
-          = link_to_prev_page @search.hits, 'Previous', class: 'nav-link'
-        %li.nav-item
-          %span.nav-link  
-            = page_entries_info @search.hits, entry_name: 'hit'
-        %li.nav-item
-          = link_to_next_page @search.hits, 'Next', class: 'nav-link'
+.row
+  .col-sm-12
+    %ul.nav.nav-fill
+      %li.nav-item
+        = link_to_prev_page @search.hits, 'Previous', class: 'nav-link'
+      %li.nav-item
+        %span.nav-link  
+          = page_entries_info @search.hits, entry_name: 'hit'
+      %li.nav-item
+        = link_to_next_page @search.hits, 'Next', class: 'nav-link'
   -# = paginate @search.hits
-  = render :partial => 'home/search_results', :locals => { :q => @q, :search => @search }
-  = paginate @search.hits
+= render :partial => 'home/search_results', :locals => { :q => @q, :search => @search }
+= paginate @search.hits

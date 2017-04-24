@@ -6,9 +6,9 @@
       = Time.at(elem.length).strftime("%M:%S").sub(/^0/,'')
     .tracknum
       = elem.tracknum
-    .song
+    .song.font-weight-bold.text-left
       = elem.song_name
-    .artist
+    .artist.text-left
       = elem.artist_name
     .album
       = elem.album_name

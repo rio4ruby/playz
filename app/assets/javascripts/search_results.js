@@ -37,7 +37,7 @@ function init_popstate() {
         if( !state.q ) {
             state.q = $.querystring.q;
         }
-        $('#search-form input').val(state.q);
+        $('#q').val(state.q);
         show_search_results(state);
         //var url = '/home?';
         //alert(e.data);
@@ -46,9 +46,9 @@ function init_popstate() {
 }
 
 function init_query_click() {
-    $('#search-form button').on('click', function(e) {
+    $('#search-button').on('click', function(e) {
         e.preventDefault();
-        var query = $('#search-form input').val();
+        var query = $('#q').val();
         var params = { q: query };
         console.log('init_query_click', params);
         show_search_results(params);
@@ -60,7 +60,7 @@ function init_query_links() {
     $('.query-link').on('click', function(e) {
         e.preventDefault();
         var queryobj = queryobject($(this).attr('href'));
-        $('#search-form input').val(queryobj.q);
+        $('#q').val(queryobj.q);
         show_search_results(queryobj);
         update_location(queryobj);
     });
