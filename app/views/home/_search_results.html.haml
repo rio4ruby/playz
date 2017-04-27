@@ -1,11 +1,12 @@
 - search.hits.each do |hit|
-  .row.hit-row{ class: "#{hit.class_name}" }
+  .row
     .col-sm-12
-      - elem = hit.instance
-      .elem{ 'data-elem_id' => "#{elem.class.to_s.tableize}-#{elem.id}" }
-        .elem-head
-          .row
-            .col-sm-12
-              = render partial: "#{hit.class_name.tableize}/elem_head", locals: { elem: elem }
-        .elem-body  
-          = render partial: "#{hit.class_name.tableize}/elem_body", locals: { elem: elem }
+      .hit-row{ class: "#{hit.class_name}" }
+        - elem = hit.instance
+        .elem{ 'data-elem_id' => "#{elem.class.to_s.tableize}-#{elem.id}" }
+          .elem-head
+            .row
+              .col-sm-12
+                = render partial: "#{hit.class_name.tableize}/elem_head", locals: { elem: elem }
+          .elem-body  
+            = render partial: "#{hit.class_name.tableize}/elem_body", locals: { elem: elem }

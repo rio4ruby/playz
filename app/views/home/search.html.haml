@@ -1,5 +1,6 @@
 .row
-  .col-sm-12#search-results
-    .text-center
-      = image_tag('search-loading.gif')
+  .col-sm-12
+    #search-results.rounded
+      .text-center
+        = image_tag('search-loading.gif')
     -# = render :partial => 'home/search_results', :locals => { :q => @q, :search => @search }

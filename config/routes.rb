@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 Rails.application.routes.draw do
   get 'player/simple'
+  get 'player/car'
 
   resources :playlists
   devise_for :users
