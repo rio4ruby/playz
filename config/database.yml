@@ -17,7 +17,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: playdb.kitatdot.net
+  host: playdb.kitatdotnet.net
   username: play
   password: play
   
@@ -84,6 +84,8 @@ test:
 #
 production:
   <<: *default
+  host: playdb.kitatdotnet.net
   database: playz_production
   username: play
-  password: <%= ENV['PLAYZ_DATABASE_PASSWORD'] %>
+  password: play
+  # password: <%= ENV['PLAYZ_DATABASE_PASSWORD'] %>
