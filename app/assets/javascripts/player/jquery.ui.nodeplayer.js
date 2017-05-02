@@ -6,7 +6,7 @@
         
 	_create: function(){
             console.log("nodeplayer: _create");
-            this._volume = $.cookie('player_volume') || 60;
+            this._volume = $.cookie('player_volume') || 100;
             this._mute = false;
             this._sounds = {};
             this._infos = {};
