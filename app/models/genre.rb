@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Genre < ApplicationRecord
   has_many :audio_files, dependent: :nullify
   has_many :artists, through: :audio_files

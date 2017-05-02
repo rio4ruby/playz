@@ -1,10 +1,11 @@
 # frozen_string_literal: true
+
 class ImageFile < ApplicationRecord
   belongs_to :file_dir
 
-  scope :midsize, lambda {
+  scope(:midsize, lambda {
     where(['image_files.columns < ? AND image_files.number_colors > ? ', 325, 1])
-  }
+  })
 
   def filepath
     [file_dir.name, filename].join('/')
@@ -14,8 +15,11 @@ class ImageFile < ApplicationRecord
     filepath.sub('/srv/mp3/', '')
   end
 
+  def rooturl
+    Rails.configuration.media['image_url'].sub(%r{/+$}, '')
+  end
+
   def imageurl
-    'http://media.kitatdot.net/image/' + URI.escape(fileurl)
-    # ['http://localhost/media',self.file_dir.name,self.filename].join('/')
+    rooturl + '/' + URI.escape(fileurl)
   end
 end

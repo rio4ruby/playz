@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class CreateListHeads < ActiveRecord::Migration[5.0]
   def change
     create_table :list_heads do |t|
@@ -8,6 +9,6 @@ class CreateListHeads < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
-    add_index :list_heads, [:user_id, :name], unique: true
+    add_index :list_heads, %i[user_id name], unique: true
   end
 end

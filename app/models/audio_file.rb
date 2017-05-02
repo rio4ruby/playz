@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class AudioFile < ApplicationRecord
   belongs_to :file_dir
   belongs_to :artist
@@ -19,7 +20,7 @@ class AudioFile < ApplicationRecord
 
   searchable auto_index: true,
              auto_remove: true,
-             include: [:song, :artist, :album]  do
+             include: %i[song artist album] do
     integer :id
 
     text :song_name, boost: 0.7 do
@@ -96,9 +97,12 @@ class AudioFile < ApplicationRecord
     filepath.sub('/srv/mp3/', '')
   end
 
+  def rooturl
+    Rails.configuration.media['audio_url'].sub(%r{/+$}, '')
+  end
+
   def url
-    'http://media.kitatdot.net/audio/' + URI.escape(fileurl)
-    # '/media/' + URI.escape(self.filepath)
+    rooturl + '/' + URI.escape(fileurl)
   end
 
   def duration

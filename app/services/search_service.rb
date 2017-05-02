@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class SearchService
   DEFAULT_OPTS = { page: 1, per: 10 }.freeze
 
@@ -16,10 +17,10 @@ class SearchService
   def search(*models)
     opts[:q] ||= ''
     Sunspot.search(*models) do |s|
-      s.data_accessor_for(Lyric).include = [:artist, :song]
+      s.data_accessor_for(Lyric).include = %i[artist song]
       s.data_accessor_for(Album).include = [:album_artist, { audio_files: [:song, :artist, { file_dir: :image_files }] }]
-      s.data_accessor_for(AudioFile).include = [:album, :artist, :song, :file_dir]
-      s.data_accessor_for(Artist).include = [:albums, { audio_files: [:album, :song, :file_dir] }]
+      s.data_accessor_for(AudioFile).include = %i[album artist song file_dir]
+      s.data_accessor_for(Artist).include = [:albums, { audio_files: %i[album song file_dir] }]
 
       s.order_by(:random) if opts[:q] == ''
       s.keywords opts[:q]

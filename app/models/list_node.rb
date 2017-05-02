@@ -1,14 +1,15 @@
 # frozen_string_literal: true
+
 class ListNode < ApplicationRecord
   belongs_to :listable, polymorphic: true
 
   has_ancestry orphan_strategy: :destroy, cache_depth: true
   acts_as_list scope: 'ancestry = \'#{ancestry}\''
 
-  scope :ordered, -> { order(:ancestry_depth, :position) }
-  scope :my, lambda { |user|
+  scope(:ordered, -> { order(:ancestry_depth, :position) })
+  scope(:my, lambda { |user|
     root.joins(:list_heads).where('list_heads.user_id = ?', user.id)
-  }
+  })
 
   def flatten(node)
     pos = node.position

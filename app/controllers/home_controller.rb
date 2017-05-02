@@ -1,6 +1,7 @@
 # frozen_string_literal: true
+
 class HomeController < ApplicationController
-  layout proc { |controller| controller.request.xhr? ? false : 'application' }
+  layout(proc { |controller| controller.request.xhr? ? false : 'application' })
 
   respond_to :html, :js
   before_action :authenticate_user!

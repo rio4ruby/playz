@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Song < ApplicationRecord
   has_many :audio_files, dependent: :nullify
   has_many :artists, through: :audio_files
@@ -11,7 +12,7 @@ class Song < ApplicationRecord
 
   searchable auto_index: true,
              auto_remove: true,
-             include: [:artists, :albums]  do
+             include: %i[artists albums] do
     integer :id
 
     text :name, stored: true, boost: 10

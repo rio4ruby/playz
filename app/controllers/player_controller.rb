@@ -1,7 +1,7 @@
 # frozen_string_literal: true
-class PlayerController < ApplicationController
-  layout proc { |controller| controller.request.xhr? ? false : 'application' }
 
+class PlayerController < ApplicationController
+  layout(proc { |controller| controller.request.xhr? ? false : 'application' })
   def simple
     @list_node = ListHead.my(current_user).playing.all.map(&:list_node).first
 

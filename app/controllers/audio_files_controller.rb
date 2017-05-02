@@ -1,6 +1,7 @@
 # frozen_string_literal: true
+
 class AudioFilesController < ApplicationController
-  layout proc { |controller| controller.request.xhr? ? false : 'application' }
+  layout(proc { |controller| controller.request.xhr? ? false : 'application' })
 
   def add
     @id = params[:id]

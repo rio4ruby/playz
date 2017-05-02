@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module ListNodesHelper
   def list_node_playdata_class(node)
     node.listable_type == 'AudioFile' ? 'playdata' : nil

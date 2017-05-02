@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class CreateAlbums < ActiveRecord::Migration[5.0]
   def change
     create_table :albums do |t|
@@ -9,6 +10,6 @@ class CreateAlbums < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
-    add_index :albums, [:album_dir_id, :name], unique: true
+    add_index :albums, %i[album_dir_id name], unique: true
   end
 end

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class CreateAudioFiles < ActiveRecord::Migration[5.0]
   def change
     create_table :audio_files do |t|
@@ -25,6 +26,6 @@ class CreateAudioFiles < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
-    add_index :audio_files, [:file_dir_id, :filename], unique: true
+    add_index :audio_files, %i[file_dir_id filename], unique: true
   end
 end

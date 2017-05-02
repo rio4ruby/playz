@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class CreateLyrics < ActiveRecord::Migration[5.0]
   def change
     create_table :lyrics do |t|
@@ -11,6 +12,6 @@ class CreateLyrics < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
-    add_index :lyrics, [:artist_id, :song_id], unique: true
+    add_index :lyrics, %i[artist_id song_id], unique: true
   end
 end

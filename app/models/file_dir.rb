@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class FileDir < ApplicationRecord
   has_ancestry
   has_many :audio_files, dependent: :destroy

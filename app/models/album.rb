@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Album < ApplicationRecord
   belongs_to :album_dir, class_name: 'FileDir'
   belongs_to :album_artist, class_name: 'Artist'

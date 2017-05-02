@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class CreateListNodes < ActiveRecord::Migration[5.0]
   def change
     create_table :list_nodes do |t|
@@ -9,6 +10,6 @@ class CreateListNodes < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
-    add_index :list_nodes, [:listable_id, :listable_type]
+    add_index :list_nodes, %i[listable_id listable_type]
   end
 end

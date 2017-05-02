@@ -1,8 +1,9 @@
 # frozen_string_literal: true
+
 class ListNodesController < ApplicationController
   before_action :authenticate_user!
 
-  layout proc { |controller| controller.request.xhr? ? false : 'appfixed' }
+  layout(proc { |controller| controller.request.xhr? ? false : 'appfixed' })
 
   def move_to
     item_id = record_id(params[:item])

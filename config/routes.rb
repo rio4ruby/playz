@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 Rails.application.routes.draw do
   get 'player/simple'
   get 'player/car'
@@ -45,7 +46,7 @@ Rails.application.routes.draw do
   get 'list_nodes/move_to'
   get 'list_nodes/add_to_playing'
   post 'list_nodes/playlist_playable_items'
-  resources :list_nodes, only: [:index, :destroy]
+  resources :list_nodes, only: %i[index destroy]
 
   root to: 'home#index'
 end

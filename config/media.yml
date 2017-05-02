@@ -1,0 +1,12 @@
+default: &default
+  audio_url: http://audio.kitatdot.net 
+  image_url: http://image.kitatdot.net 
+  
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default

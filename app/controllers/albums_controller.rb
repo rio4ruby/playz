@@ -1,7 +1,8 @@
 # frozen_string_literal: true
+
 require 'filemagic'
 class AlbumsController < ApplicationController
-  layout proc { |controller| controller.request.xhr? ? false : 'application' }
+  layout(proc { |controller| controller.request.xhr? ? false : 'application' })
 
   def altimg(album, size = 'medium')
     artist = album.album_artist
@@ -10,7 +11,7 @@ class AlbumsController < ApplicationController
       artist_name = artist.name
       altdir = "/srv/data/lastfm2/album/#{artist_name}/#{album_name}/cover"
       imgfilebase = altdir + '/' + size + '.'
-      %w(jpg png).each do |ext|
+      %w[jpg png].each do |ext|
         imgfile = imgfilebase + ext
         return imgfile if ::File.exist?(imgfile)
       end
