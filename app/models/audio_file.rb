@@ -17,11 +17,13 @@ class AudioFile < ApplicationRecord
   validates :layer, numericality: true, allow_nil: true
   validates :mpeg_version, numericality: true, allow_nil: true
 
-  searchable auto_index: true, auto_remove: true do
+  searchable auto_index: true,
+             auto_remove: true,
+             include: [:song, :artist, :album]  do
     integer :id
 
     text :song_name, boost: 0.7 do
-      song ? song.name : ''
+      song_name
     end
 
     text :song_name_textp, stored: true, boost: 0.1, as: :name_textp do
@@ -36,9 +38,9 @@ class AudioFile < ApplicationRecord
       album ? album.name : ''
     end
 
-    text :lyric_text, stored: true, boost: 0.05, as: :lyric_text_textp do
-      (lyric ? lyric.text : '')
-    end
+    # text :lyric_text, stored: true, boost: 0.05, as: :lyric_text_textp do
+    #   (lyric ? lyric.text : '')
+    # end
 
     integer :artist_id, references: Artist
     integer :album_id, references: Album

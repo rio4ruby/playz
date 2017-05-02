@@ -9,7 +9,13 @@ class Artist < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
-  searchable auto_index: true, auto_remove: true do
+  def album_names
+    albums.map(&:name).join(' ')
+  end
+
+  searchable auto_index: true,
+             auto_remove: true,
+             include: [:albums] do
     integer :id
 
     string :name
@@ -23,7 +29,7 @@ class Artist < ApplicationRecord
     end
 
     text :album_names, boost: 0.2 do
-      albums.map(&:name).join(' ')
+      album_names
     end
   end
 end

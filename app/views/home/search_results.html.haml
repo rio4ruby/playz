@@ -19,5 +19,6 @@
       %li.nav-item
         = link_to_next_page @search.hits, 'Next', class: 'nav-link'
   -# = paginate @search.hits
+    
 = render :partial => 'home/search_results', :locals => { :q => @q, :search => @search }
 = paginate @search.hits

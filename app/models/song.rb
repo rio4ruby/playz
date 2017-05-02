@@ -9,7 +9,9 @@ class Song < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
-  searchable auto_index: true, auto_remove: true do
+  searchable auto_index: true,
+             auto_remove: true,
+             include: [:artists, :albums]  do
     integer :id
 
     text :name, stored: true, boost: 10
