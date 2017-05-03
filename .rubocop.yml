@@ -21,6 +21,9 @@ Style/FrozenStringLiteralComment:
 Style/Documentation:
   Enabled: false
   
+Style/SymbolArray:
+  Enabled: false
+  
 Metrics/BlockLength:
   Exclude:
     - 'Rakefile'

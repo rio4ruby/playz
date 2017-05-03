@@ -7,6 +7,7 @@ class Artist < ApplicationRecord
   has_many :genres, through: :audio_files
   has_many :file_dirs, through: :audio_files
   has_many :solo_albums, foreign_key: :album_artist_id, class_name: 'Album'
+  has_many :lyrics
 
   validates :name, presence: true, uniqueness: true
 

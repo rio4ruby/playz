@@ -4,14 +4,14 @@
   %a.navbar-brand{:href => "/"}
     = image_tag('note-blue-32.png')
   #navbarNav.collapse.navbar-collapse
-    %ul.navbar-nav
-      %li.nav-item
-        %a.nav-link#nav-link-search{:href => "/home/player"} Player
-      %li.nav-item
-        %a.nav-link#nav-link-search{:href => "/home/search"} Search
-      %li.nav-item
-        %a.nav-link#nav-link-playlist{:href => "/home/playlist"} Playlist
     %form#search-form.form-search.form-inline
       %input#q.form-control.search-query{ type: "search",  placeholder: "Search" }
         %button#search-button.btn.btn-link{ type: "submit" }
           %i.material-icons search
+    %ul.navbar-nav
+      %li.nav-item
+        %a.nav-link#nav-link-player{:href => "/home/player"} Player
+      %li.nav-item
+        %a.nav-link#nav-link-search{:href => "/home/search"} Search
+      %li.nav-item
+        %a.nav-link#nav-link-playlist{:href => "/home/playlist"} Playlist

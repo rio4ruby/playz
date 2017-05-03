@@ -10,6 +10,7 @@ class AudioFile < ApplicationRecord
   has_many :audio_files_tags
   has_many :tags, through: :audio_files_tags
   has_many :list_nodes, as: :listable
+  has_many :lyrics, through: :song
 
   validates :tracknum, numericality: true, allow_nil: true
   validates :bitrate, numericality: true, allow_nil: true
@@ -20,7 +21,7 @@ class AudioFile < ApplicationRecord
 
   searchable auto_index: true,
              auto_remove: true,
-             include: %i[song artist album] do
+             include: [:song, :artist, :album] do
     integer :id
 
     text :song_name, boost: 0.7 do
@@ -40,6 +41,8 @@ class AudioFile < ApplicationRecord
     end
 
     # text :lyric_text, stored: true, boost: 0.05, as: :lyric_text_textp do
+    #   #lyr = song.lyrics.first
+    #   #lyr ? lyr.text : ""
     #   (lyric ? lyric.text : '')
     # end
 
@@ -60,7 +63,8 @@ class AudioFile < ApplicationRecord
   end
 
   def lyric
-    Lyric.where(artist_id: artist_id, song_id: song_id).first
+    lyrics.includes(:artist).where(artist_id: artist.id).first
+    # Lyric.where(artist_id: artist_id, song_id: song_id).first
   end
 
   def self.limit_to(*els)
