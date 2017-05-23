@@ -12,14 +12,14 @@ require 'mina/rvm' # for rvm support. (https://rvm.io)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
 set :application_name, 'playz'
-set :domain, 'kitatdot.net'
+set :domain, 'kitatdotnet.net'
 set :deploy_to, '/srv/www/playz'
 set :repository, 'git@bitbucket.org:rio4ruby/playz.git'
 set :branch, 'master'
 
 # Optional settings:
 set :user, 'deploy' # Username in the server to SSH to.
-set :port, '22' # SSH port number.
+set :port, '7822' # SSH port number.
 #   set :forward_agent, true     # SSH forward_agent.
 
 # shared dirs and files will be symlinked into the app-folder by the 'deploy:link_shared_paths' step.

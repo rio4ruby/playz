@@ -1,14 +1,15 @@
 -# image_file = elem.album_image_file
 -# image_url = image_file ? image_file.imageurl : "256x256/devices/media-optical-audio_mount.png"
+- artists = elem.artists.uniq
+- artist = elem.album_artist || artists.first
 .elem.Album{ 'data-elem_id' => "album-#{elem.id}" } 
   .elem-image
-    = link_to %{<img src="#{albumart_url(elem,'medium')}" border="0" />}.html_safe, add_album_path(elem.id), :remote => true
+    = link_to %{<img src="#{image_url(artist,elem)}" border="0" />}.html_safe, add_album_path(elem.id), :remote => true
   .elem-data
     .name
       = elem.name
   .elem-content
     .artists
-      - artists = elem.artists.uniq
       = artists.first(3).map(&:name).join(", ").html_safe
       = (artists.size > 3 ? " &hellip;".html_safe : "")
     - if elem.audio_files

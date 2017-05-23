@@ -2,6 +2,6 @@
 -# image_url = image_file ? image_file.imageurl : "256x256/devices/media-optical-audio_mount.png"
 .elem.Artist.Album.playable{:id => "sr-artist-#{artist.id}-album-#{album.id}", 'data-elem_id' => "album-#{album.id}"}
   .elem-image.float-left
-    = link_to %{<img src="#{albumart_url(album,'small')}" border="0" />}.html_safe, artist_album_add_path(artist.id,album.id), :remote => true, :title => "Add '#{album.name}' to Playing"
+    = link_to %{<img src="#{image_url(album,'small')}" border="0" />}.html_safe, artist_album_add_path(artist.id,album.id), :remote => true, :title => "Add '#{album.name}' to Playing"
   .elem-data
     .name=link_to album.name, album_path(album.id), :class => 'link-name'

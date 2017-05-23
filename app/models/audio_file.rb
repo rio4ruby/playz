@@ -20,7 +20,7 @@ class AudioFile < ApplicationRecord
 
   searchable auto_index: true,
              auto_remove: true,
-             include: [{song: :lyrics}, {artist: :lyrics}, :album] do
+             include: [{ song: :lyrics }, { artist: :lyrics }, :album] do
     integer :id
 
     text :song_name, boost: 0.7 do
@@ -41,7 +41,7 @@ class AudioFile < ApplicationRecord
 
     text :lyric_text, stored: true, boost: 0.05, as: :lyric_text_textp do
       artist_lyric_ids = artist.lyrics.map(&:id)
-      song.lyrics.select{|l| artist_lyric_ids.include?(l.id) }.map(&:text).join(' ')
+      song.lyrics.select { |l| artist_lyric_ids.include?(l.id) }.map(&:text).join(' ')
     end
 
     integer :artist_id, references: Artist
@@ -61,7 +61,7 @@ class AudioFile < ApplicationRecord
   end
 
   def lyric
-    lyrics.includes(:artist,:song).where(artist_id: artist.id, song_id: song.id).first
+    lyrics.includes(:artist, :song).where(artist_id: artist.id, song_id: song.id).first
     # Lyric.where(artist_id: artist_id, song_id: song_id).first
   end
 

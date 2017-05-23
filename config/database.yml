@@ -17,7 +17,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: playdb.kitatdotnet.net
+  host: playdb.kitatdot.net
   username: play
   password: play
   
@@ -84,7 +84,7 @@ test:
 #
 production:
   <<: *default
-  host: playdb.kitatdotnet.net
+  host: playdb.kitatdot.net
   database: playz_production
   username: play
   password: play
