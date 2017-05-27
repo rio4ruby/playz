@@ -17,9 +17,8 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: playdb.kitatdot.net
+  host: playdb.kitatdotnet.net
   username: play
-  password: play
   
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
@@ -84,8 +83,5 @@ test:
 #
 production:
   <<: *default
-  host: playdb.kitatdot.net
   database: playz_production
-  username: play
-  password: play
-  # password: <%= ENV['PLAYZ_DATABASE_PASSWORD'] %>
+
