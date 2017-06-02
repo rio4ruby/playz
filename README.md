@@ -29,3 +29,9 @@ could be used
   fallback options for browsers that don't support intrinsic HTML5 audio.
 
 * Makes extensive use of **HTML5** and **CSS3**
+
+# Demostration
+
+* Live production deployment is *usually* available at http://playz.kitatdotnet.net
+
+* Source is available at https://bitbucket.org/rio4ruby/playz
