@@ -1,24 +1,31 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+PlayZ allows one to access their private music collection from anywhere
+one has web access. This includes the ability to search their collection
+by artist, song, album or **lyrics**.
 
-Things you may want to cover:
 
-* Ruby version
+This is a proof of concept project and therefore does not have extensive
+documentation for setting up a new site.
 
-* System dependencies
+# Versions
 
-* Configuration
+* Ruby 2.4
 
-* Database creation
+* Rails 5.0
 
-* Database initialization
+# Technologies
 
-* How to run the test suite
+* For fast searches **Sunspot Solr** is used.
 
-* Services (job queues, cache servers, search engines, etc.)
+* Database used in the demo is postgresql, but any rails compatible database
+could be used
 
-* Deployment instructions
+* **Twitter Bootstrap** is used for the majority of the UX.
 
-* ...
+* JavaScript uses the **jQuery** library.
+
+* Playback is handled by **Sound Manager 2**, due to its handling of its extensive
+  fallback options for browsers that don't support intrinsic HTML5 audio.
+
+* Makes extensive use of **HTML5** and **CSS3**
