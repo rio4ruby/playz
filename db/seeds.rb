@@ -21,6 +21,9 @@ puts 'First user created: ' + user.email
 demo_user = create_user('demo@kitatdot.net', 'demodemo')
 puts 'Demo user created: ' + demo_user.email
 
+demo_user = create_user('kit@kitatdotnet.net', 'demodemo')
+puts 'Demo user created: ' + demo_user.email
+
 def pg_args(db_config)
   "-U #{db_config['username']} -h #{db_config['host']} #{db_config['database']}"
 end

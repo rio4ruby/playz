@@ -25,7 +25,7 @@ could be used
 
 * JavaScript uses the **jQuery** library.
 
-* Playback is handled by **Sound Manager 2**, due to its handling of its extensive
+* Playback is handled by **Sound Manager 2**, due to its handling of
   fallback options for browsers that don't support intrinsic HTML5 audio.
 
 * Makes extensive use of **HTML5** and **CSS3**
@@ -35,3 +35,6 @@ could be used
 * Live production deployment is *usually* available at http://playz.kitatdotnet.net
 
 * Source is available at https://bitbucket.org/rio4ruby/playz
+
+* Credentials for the demo are kit@kitatdotnet.net/demodemo
+
