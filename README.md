@@ -34,7 +34,7 @@ could be used
 
 * Live production deployment is *usually* available at http://playz.kitatdotnet.net
 
-* Source is available at https://bitbucket.org/rio4ruby/playz
+* Source is available at https://github.com/rio4ruby/playz
 
 * Credentials for the demo are kit@kitatdotnet.net/demodemo
 
