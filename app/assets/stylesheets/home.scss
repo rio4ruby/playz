@@ -1,7 +1,26 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#navbar-right {
+    margin-right: 1em;
+    margin-left: auto;
+    color: #777;
+}
+#drop-down a {
+    text-align: center;
+    color: #777;
+}
 #navbarNav {
+    #navbar-right {
+        margin-right: 1em;
+        margin-left: auto;
+        .nav-link {
+            color: #bbb;
+            &:hover {
+                color: white;
+            }
+        }
+    }
     .nav-link {
         color: transparent;
         &:hover {
@@ -15,8 +34,7 @@
     .colm {
         border: 1px solid red;
     }
-}
-.level2 {
+}.level2 {
      background-color: #aaa;
     .colm {
         border: 1px solid blue;

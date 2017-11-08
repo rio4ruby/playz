@@ -14,7 +14,8 @@ sudo apt-get install curl git patch build-essential openssl libreadline6 libread
      libmagickwand-6.q16-dev \
      libmagickwand-dev \
      libmagickcore-dev \
-     libwebp-dev
+     libwebp-dev \
+     openjdk-9-jre-headless
      # graphicsmagick-libmagick-dev-compat \
 
 # imagemagick - image manipulation programs -- binaries

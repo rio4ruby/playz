@@ -15,3 +15,12 @@
         %a.nav-link#nav-link-search{:href => "/home/search"} Search
       %li.nav-item
         %a.nav-link#nav-link-playlist{:href => "/home/playlist"} Playlist
+    - if user_signed_in?
+      %ul.navbar-nav#navbar-right
+        %li.nav-item.dropdown
+          %a.nav-link.dropdown-toggle#navbarDropdownMenuLink{href: '/', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false'}
+            = current_user.email
+            %i.material-icons
+              account_circle
+          .dropdown-menu#drop-down{'aria-labelledby': 'navbarDropdownMenuLink'}
+            = link_to('Logout', destroy_user_session_path, method: :delete, class: 'btn btn-dark')
