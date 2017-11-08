@@ -14,7 +14,7 @@ require 'mina/rvm' # for rvm support. (https://rvm.io)
 set :application_name, 'playz'
 set :domain, 'kitatdotnet.net'
 set :deploy_to, '/srv/www/playz'
-set :repository, 'git@bitbucket.org:rio4ruby/playz.git'
+set :repository, 'git@github.com:rio4ruby/playz.git'
 set :branch, 'master'
 
 # Optional settings:
