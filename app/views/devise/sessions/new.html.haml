@@ -1,0 +1,11 @@
+.container
+  .row
+    .card.mx-auto.p-2.my-2{ style: 'width: 20rem;' }
+      .card-body
+        %h4.card-title Login
+        %h6.card-subtitle.mb-2.text-muted You must be logged in
+        %p.card-text
+          = bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+            = f.email_field :email, autofocus: true
+            = f.password_field :password, autocomplete: "off"
+            = f.submit "Log in"
