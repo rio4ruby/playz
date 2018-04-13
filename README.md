@@ -30,7 +30,7 @@ could be used
 
 * Makes extensive use of **HTML5** and **CSS3**
 
-# Demostration
+# Demonstration
 
 * Live production deployment is *usually* available at http://playz.kitatdotnet.net
 
