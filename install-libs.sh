@@ -1,22 +1,44 @@
 #!/bin/bash
 
-sudo apt-get install curl git patch build-essential openssl libreadline6 libreadline6-dev curl git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison subversion \
+sudo apt-get install \
+     curl \
+     git \
+     patch \
+     build-essential \
+     openssl \
+     libreadline7 \
+     git-core \
+     zlib1g \
+     zlib1g-dev \
+     libssl-dev \
+     libyaml-dev \
+     libsqlite3-0 \
+     libsqlite3-dev \
+     sqlite3 \
+     libxml2-dev \
+     libxslt-dev \
+     autoconf \
+     libc6-dev \
+     ncurses-dev \
+     automake \
+     libtool \
+     bison subversion \
      libpq-dev \
      libmagic-dev \
      libtag1-dev \
      ruby-rmagick \
      libmagickcore-6-arch-config \
      libmagickcore-6-headers \
-     libmagickcore-6.q16-2 \
-     libmagickcore-6.q16-2-extra \
+     libmagickcore-6.q16-6 \
+     libmagickcore-6.q16-6-extra \
      libmagickcore-6.q16-dev \
      libmagickwand-6-headers \
-     libmagickwand-6.q16-2 \
+     libmagickwand-6.q16-6 \
      libmagickwand-6.q16-dev \
      libmagickwand-dev \
      libmagickcore-dev \
      libwebp-dev \
-     openjdk-9-jre-headless
+     openjdk-11-jre-headless
      # graphicsmagick-libmagick-dev-compat \
 
 # imagemagick - image manipulation programs -- binaries
