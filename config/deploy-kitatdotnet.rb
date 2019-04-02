@@ -28,7 +28,7 @@ set :port, '7822' # SSH port number.
 
 # This task is the environment that is loaded for all remote run commands, such as
 # `mina deploy` or `mina rake`.
-task :environment do
+task :remote_environment do
   # If you're using rbenv, use this to load the rbenv environment.
   # Be sure to commit your .ruby-version or .rbenv-version to your repository.
   # invoke :'rbenv:load'
@@ -41,6 +41,7 @@ end
 # All paths in `shared_dirs` and `shared_paths` will be created on their own.
 task :setup do
   # command %{rbenv install 2.3.0}
+  command %{gem install --no-ri --no-rdoc bundle}
 end
 
 desc 'Deploys the current version to the server.'
