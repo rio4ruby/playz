@@ -6,7 +6,8 @@ module AlbumsHelper
       album_name = album.name
       artist_name = artist.name
       path = "/#{artist_name}/#{album_name}/image.jpg"
-      url = 'http://images.kitatdot.net' + path
+      url = Rails.configuration.media['images_url'] + path
+      #url = 'http://images.kitatdot.net' + path
     end
     url
   end
@@ -17,7 +18,8 @@ module AlbumsHelper
       album_name = album.name
       artist_name = artist.name
       path = "/#{artist_name}/#{album_name}/cover/#{size}.jpg"
-      url = 'http://albumart.kitatdot.net' + path
+      url = Rails.configuration.media['albumart_url'] + path
+      # url = 'http://albumart.kitatdot.net' + path
     end
     url
   end
