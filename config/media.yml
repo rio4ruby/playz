@@ -1,6 +1,12 @@
 default: &default
-  audio_url: http://audio.kitatdot.net 
-  image_url: http://image.kitatdot.net 
+  # audio.kitatdot.net 
+  audio_url: http://playz.duckdns.org:19003
+  # image.kitatdot.net 
+  image_url: http://playz.duckdns.org:19002
+  # images.kitatdot.net 
+  images_url: http://playz.duckdns.org:19001
+  # albumart.kitatdot.net 
+  albumart_url: http://playz.duckdns.org:19004
   
 development:
   <<: *default
