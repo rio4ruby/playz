@@ -13,8 +13,9 @@ require 'mina/rvm' # for rvm support. (https://rvm.io)
 
 set :application_name, 'playz'
 set :domain, 'kitatdot.net'
-set :deploy_to, '/srv/www/playz'
-set :repository, 'git@bitbucket.org:rio4ruby/playz.git'
+set :deploy_to, '/var/www/playz'
+# set :repository, 'git@bitbucket.org:rio4ruby/playz.git'
+set :repository, 'git@github.com:rio4ruby/playz.git'
 set :branch, 'master'
 
 # Optional settings:
@@ -34,7 +35,7 @@ task :environment do
   # invoke :'rbenv:load'
 
   # For those using RVM, use this to load an RVM version@gemset.
-  invoke :'rvm:use', 'ruby-2.4.1'
+  invoke :'rvm:use', 'ruby-2.4.1@playz'
 end
 
 # Put any custom commands you need to run at setup

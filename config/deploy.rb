@@ -1,1 +1,1 @@
-deploy-kitatdotnet.rb
+deploy-kitatdot.net.rb
