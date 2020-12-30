@@ -25,7 +25,7 @@ gem 'coffee-rails', '~> 4.2'
 # gem 'therubyracer'
 
 # specify version due to security warning on github
-gem 'nokogiri', '~> 1.8.1'
+gem 'nokogiri', '~> 1.10.10'
 gem 'loofah', '~> 2.2.1'
 
 # Use jquery as the JavaScript library
