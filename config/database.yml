@@ -17,7 +17,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: playdb.kitatdot.net
+  host: playdb.kitatdotnet.net
   username: play
   
   # For details on connection pooling, see rails configuration guide
