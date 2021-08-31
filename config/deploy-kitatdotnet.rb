@@ -20,6 +20,7 @@ set :branch, 'master'
 # Optional settings:
 set :user, 'deploy' # Username in the server to SSH to.
 set :port, '7822' # SSH port number.
+set :identity_file, 'keys/deploy.pem'     # Optional
 #   set :forward_agent, true     # SSH forward_agent.
 
 # shared dirs and files will be symlinked into the app-folder by the 'deploy:link_shared_paths' step.
