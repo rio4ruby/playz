@@ -26,7 +26,7 @@ gem 'coffee-rails', '~> 4.2'
 
 # specify version due to security warning on github
 gem 'nokogiri', '~> 1.11.4'
-gem 'loofah', '~> 2.3.1'
+gem 'loofah', '~> 2.19.1'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
